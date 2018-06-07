@@ -28,6 +28,8 @@ class LogInViewController: UIViewController {
 
     func initialSetup() {
         loginButton.layer.cornerRadius = 22.5
+        registerButton.addTarget(self, action: #selector(LogInViewController.registerUser), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(LogInViewController.loginWithUser), for: .touchUpInside)
     }
     
     func resetValues() {

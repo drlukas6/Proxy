@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Proxy" customModuleProvider="target">
             <connections>
+                <outlet property="createAccountButton" destination="g0n-vU-BNo" id="5Kk-GT-a7k"/>
                 <outlet property="emailTextField" destination="Q1Q-d0-jnp" id="ktC-0n-zJq"/>
                 <outlet property="logoImage" destination="F70-3a-6Tb" id="WLC-ki-4Vt"/>
                 <outlet property="passwordTextField" destination="eqg-NZ-wSs" id="PU7-5V-EyR"/>
@@ -78,8 +79,11 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-vU-BNo">
-                    <rect key="frame" x="16" y="511" width="343" height="34"/>
+                    <rect key="frame" x="16" y="511" width="343" height="45"/>
                     <color key="backgroundColor" name="seaBlue"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="fPU-Y5-P5q"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="Create Account !">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
