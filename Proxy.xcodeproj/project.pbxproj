@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2515D79DCA797339FBCD532C /* Pods_Proxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */; };
+		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
+		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
 		7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7414244520C9728A009F3FD2 /* Assets.xcassets */; };
 		7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7414243E20C9728A009F3FD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7414244520C9728A009F3FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		7414245020C97297009F3FD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */,
 				74570B9420C978CC003D48DD /* LogInViewController.swift */,
 			);
 			path = Controllers;
@@ -90,6 +95,7 @@
 		7414245120C97299009F3FD2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31201DDF20C9803700A9B5E2 /* RegisterView.xib */,
 				74570B9520C978CC003D48DD /* LogInView.xib */,
 			);
 			path = Views;
@@ -199,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */,
+				31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */,
 				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
@@ -256,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
+				31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */,
 				7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */,
 				74570B9C20C9796B003D48DD /* Listing.swift in Sources */,
 				74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */,
