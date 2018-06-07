@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2515D79DCA797339FBCD532C /* Pods_Proxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
-		7414244120C9728A009F3FD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414244020C9728A009F3FD2 /* ViewController.swift */; };
-		7414244420C9728A009F3FD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414244220C9728A009F3FD2 /* Main.storyboard */; };
 		7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7414244520C9728A009F3FD2 /* Assets.xcassets */; };
 		7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */; };
+		74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9420C978CC003D48DD /* LogInViewController.swift */; };
+		74570B9720C978CC003D48DD /* LogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74570B9520C978CC003D48DD /* LogInView.xib */; };
+		74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9920C978EB003D48DD /* PropertyKeys.swift */; };
+		74570B9C20C9796B003D48DD /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9B20C9796B003D48DD /* Listing.swift */; };
+		74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74570B9D20C97A21003D48DD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7414243E20C9728A009F3FD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7414244020C9728A009F3FD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7414244320C9728A009F3FD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7414244520C9728A009F3FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7414244820C9728A009F3FD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7414244A20C9728A009F3FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74570B9420C978CC003D48DD /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		74570B9520C978CC003D48DD /* LogInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInView.xib; sourceTree = "<group>"; };
+		74570B9920C978EB003D48DD /* PropertyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyKeys.swift; sourceTree = "<group>"; };
+		74570B9B20C9796B003D48DD /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		74570B9D20C97A21003D48DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.debug.xcconfig"; sourceTree = "<group>"; };
+		C84635E29B3773E39696135C /* Pods-Proxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2515D79DCA797339FBCD532C /* Pods_Proxy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,8 @@
 			children = (
 				7414243D20C9728A009F3FD2 /* Proxy */,
 				7414243C20C9728A009F3FD2 /* Products */,
+				D9CC8DC641DCCC6F6E0A60CE /* Pods */,
+				C2986A25966B9E3991B1B009 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +67,74 @@
 		7414243D20C9728A009F3FD2 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
-				7414243E20C9728A009F3FD2 /* AppDelegate.swift */,
-				7414244020C9728A009F3FD2 /* ViewController.swift */,
-				7414244220C9728A009F3FD2 /* Main.storyboard */,
+				74570B9D20C97A21003D48DD /* GoogleService-Info.plist */,
+				74570B9820C978DB003D48DD /* PropertyKeys */,
+				7414245320C972C4009F3FD2 /* Supporting Files */,
+				7414245220C9729B009F3FD2 /* Models */,
+				7414245120C97299009F3FD2 /* Views */,
+				7414245020C97297009F3FD2 /* Controllers */,
 				7414244520C9728A009F3FD2 /* Assets.xcassets */,
-				7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */,
 				7414244A20C9728A009F3FD2 /* Info.plist */,
 			);
 			path = Proxy;
+			sourceTree = "<group>";
+		};
+		7414245020C97297009F3FD2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				74570B9420C978CC003D48DD /* LogInViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7414245120C97299009F3FD2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74570B9520C978CC003D48DD /* LogInView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7414245220C9729B009F3FD2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74570B9B20C9796B003D48DD /* Listing.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7414245320C972C4009F3FD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */,
+				7414243E20C9728A009F3FD2 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		74570B9820C978DB003D48DD /* PropertyKeys */ = {
+			isa = PBXGroup;
+			children = (
+				74570B9920C978EB003D48DD /* PropertyKeys.swift */,
+			);
+			path = PropertyKeys;
+			sourceTree = "<group>";
+		};
+		C2986A25966B9E3991B1B009 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9CC8DC641DCCC6F6E0A60CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */,
+				C84635E29B3773E39696135C /* Pods-Proxy.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7414244D20C9728A009F3FD2 /* Build configuration list for PBXNativeTarget "Proxy" */;
 			buildPhases = (
+				D6CE1B2C4421945B11DAC36E /* [CP] Check Pods Manifest.lock */,
 				7414243720C9728A009F3FD2 /* Sources */,
 				7414243820C9728A009F3FD2 /* Frameworks */,
 				7414243920C9728A009F3FD2 /* Resources */,
+				8AA259339A6F325FE12331B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,34 +199,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */,
+				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
-				7414244420C9728A009F3FD2 /* Main.storyboard in Resources */,
+				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8AA259339A6F325FE12331B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Proxy/Pods-Proxy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Proxy/Pods-Proxy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6CE1B2C4421945B11DAC36E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Proxy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7414243720C9728A009F3FD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7414244120C9728A009F3FD2 /* ViewController.swift in Sources */,
+				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
 				7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */,
+				74570B9C20C9796B003D48DD /* Listing.swift in Sources */,
+				74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7414244220C9728A009F3FD2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7414244320C9728A009F3FD2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -272,10 +385,12 @@
 		};
 		7414244E20C9728A009F3FD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Proxy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruaziosteam.Proxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,10 +401,12 @@
 		};
 		7414244F20C9728A009F3FD2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C84635E29B3773E39696135C /* Pods-Proxy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Proxy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruaziosteam.Proxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
