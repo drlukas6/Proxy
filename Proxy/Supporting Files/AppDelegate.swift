@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let initialViewController = LogInViewController(nibName: NibNames.logIn, bundle: nil)
-        window?.rootViewController = initialViewController
+        let mainNavigationController = UINavigationController(rootViewController: initialViewController)
+        window?.rootViewController = mainNavigationController
         window?.makeKeyAndVisible()
         
         return true
