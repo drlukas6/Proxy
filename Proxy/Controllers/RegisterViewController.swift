@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
     }
 
     @IBAction func createAccount(_ sender: UIButton) {
-        print(usernameTextField.text! + "" + passwordTextField.text! + "" + emailTextField.text!)
+        print(usernameTextField.text! + " " + passwordTextField.text! + " " + emailTextField.text!)
         guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
