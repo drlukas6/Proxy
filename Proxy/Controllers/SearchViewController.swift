@@ -30,46 +30,46 @@ class SearchViewController: UIViewController {
 
 }
 
-extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = ReviewsTableSectionHeader()
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let review = viewModel.review(atIndex: indexPath.row) {
-            let singleReviewViewModel = SingleReviewViewModel(review: review)
-            let singleReviewViewController = SingleReviewViewController(viewModel: singleReviewViewModel)
-            navigationController?.pushViewController(singleReviewViewController, animated: true)
-        }
-    }
-}
-
-extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! SearchTableViewCell
-        
-        if let review = viewModel.review(atIndex: indexPath.row) {
-            cell.setup(withReview: review)
-        }
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfReviews()
-    }
-}
+//extension SearchViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 150.0
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let view = ReviewsTableSectionHeader()
+//        return view
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 50.0
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//
+//        if let review = viewModel.review(atIndex: indexPath.row) {
+//            let singleReviewViewModel = SingleReviewViewModel(review: review)
+//            let singleReviewViewController = SingleReviewViewController(viewModel: singleReviewViewModel)
+//            navigationController?.pushViewController(singleReviewViewController, animated: true)
+//        }
+//    }
+//}
+//
+//extension SearchViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! SearchTableViewCell
+//
+//        if let review = viewModel.review(atIndex: indexPath.row) {
+//            cell.setup(withReview: review)
+//        }
+//        return cell
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return viewModel.numberOfReviews()
+//    }
+//}
