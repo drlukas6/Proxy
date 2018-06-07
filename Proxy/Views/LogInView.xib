@@ -13,6 +13,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController" customModule="Proxy" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="Gel-0j-zYi" id="Z87-Xi-kns"/>
+                <outlet property="loginButton" destination="WCk-Ds-T0x" id="VOq-yP-z30"/>
+                <outlet property="passwordTextField" destination="M3J-ka-6MO" id="JY4-ip-NZm"/>
+                <outlet property="registerButton" destination="tpk-xa-Gd7" id="NR4-p3-Qgi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,7 +50,7 @@
                             </constraints>
                             <color key="textColor" name="seaBlue"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" textContentType="password"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCk-Ds-T0x">
                             <rect key="frame" x="0.0" y="100" width="343" height="45"/>
@@ -65,7 +69,7 @@
                                 <constraint firstAttribute="height" constant="10" id="Ky0-ei-yqG"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <state key="normal" title="REGISTER">
+                            <state key="normal" title="NEW USER?">
                                 <color key="titleColor" name="skyBlue"/>
                             </state>
                         </button>
