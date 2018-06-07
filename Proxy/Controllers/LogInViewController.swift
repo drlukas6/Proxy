@@ -21,9 +21,18 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        resetValues()
+    }
 
     func initialSetup() {
         loginButton.layer.cornerRadius = 22.5
+    }
+    
+    func resetValues() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
     
     @objc func loginWithUser() {
@@ -33,11 +42,14 @@ class LogInViewController: UIViewController {
                 print(error.localizedDescription)
             }
             if let user = response?.user {
-                let changeRequest = user.createProfileChangeRequest()
-                changeRequest.displayName = "Test"
                 print("User \(user) logged in!")
             }
         }
+    }
+    
+    @objc func registerUser() {
+        let registerViewController = RegisterViewController()
+        self.navigationController?.pushViewController(registerViewController, animated: true)
     }
 
     

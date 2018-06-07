@@ -14,6 +14,7 @@ import Foundation
 
 struct NibNames {
     static let logIn = "LogInView"
+    static let register = "RegisterView"
 }
 
 
