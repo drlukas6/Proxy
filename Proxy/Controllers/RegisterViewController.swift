@@ -35,16 +35,23 @@ class RegisterViewController: UIViewController {
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { (response, error) in
-            print(email)
-            print(password + "   ####")
+
             if let error = error {
                 print(error.localizedDescription)
             }
             if let user = response?.user {
-//                let changeRequest = user.createProfileChangeRequest()
-//                changeRequest.displayName = username
-//                print("User \(user.displayName) registered!")
-                self.navigationController?.popViewController(animated: true)
+                let changeRequest = user.createProfileChangeRequest()
+                changeRequest.displayName = username
+                changeRequest.commitChanges(completion: { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    else {
+                        print("User \(user.displayName) registered!")
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                })
+                
             }
         }
     }

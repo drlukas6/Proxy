@@ -39,7 +39,7 @@ class LogInViewController: UIViewController {
     }
     
     @objc func loginWithUser() {
-        guard let email = emailTextField.text, let password = emailTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         Auth.auth().signIn(withEmail: email, password: password) { (response, error) in
             if let error = error {
                 print(error.localizedDescription)
