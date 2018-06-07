@@ -25,43 +25,29 @@ class RegisterViewController: UIViewController {
     }
     
     func initialSetup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.hideKeyboardWhenTappedAround() 
         
         createAccountButton.layer.cornerRadius = 22.5
     }
 
     @IBAction func createAccount(_ sender: UIButton) {
-        print(usernameTextField.text! + "" + passwordTextField.text! + "" + emailTextField.text!)
         guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { (response, error) in
+            print(email)
+            print(password + "   ####")
             if let error = error {
                 print(error.localizedDescription)
             }
             if let user = response?.user {
-                let changeRequest = user.createProfileChangeRequest()
-                changeRequest.displayName = username
-                print("User \(user) registered!")
+//                let changeRequest = user.createProfileChangeRequest()
+//                changeRequest.displayName = username
+//                print("User \(user.displayName) registered!")
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
     
 }

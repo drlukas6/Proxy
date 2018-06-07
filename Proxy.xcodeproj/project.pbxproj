@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2515D79DCA797339FBCD532C /* Pods_Proxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */; };
+		2F6A6E9820C9AA5100BF328A /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A6E9720C9AA5100BF328A /* ViewControllerExtensions.swift */; };
 		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
 		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		24B09EC063C23740543BE6C6 /* Pods_Proxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F6A6E9720C9AA5100BF328A /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F6A6E9620C9AA3D00BF328A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F6A6E9720C9AA5100BF328A /* ViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7414243220C9728A009F3FD2 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 		7414243D20C9728A009F3FD2 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
+				2F6A6E9620C9AA3D00BF328A /* Extensions */,
 				74570B9D20C97A21003D48DD /* GoogleService-Info.plist */,
 				74570B9820C978DB003D48DD /* PropertyKeys */,
 				7414245320C972C4009F3FD2 /* Supporting Files */,
@@ -276,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6A6E9820C9AA5100BF328A /* ViewControllerExtensions.swift in Sources */,
 				74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */,
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
 				31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */,
@@ -417,7 +429,7 @@
 				INFOPLIST_FILE = Proxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruaziosteam.Proxy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruazios.Proxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -434,7 +446,7 @@
 				INFOPLIST_FILE = Proxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruaziosteam.Proxy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruazios.Proxy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
