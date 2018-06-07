@@ -18,6 +18,10 @@
 		74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9920C978EB003D48DD /* PropertyKeys.swift */; };
 		74570B9C20C9796B003D48DD /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9B20C9796B003D48DD /* Listing.swift */; };
 		74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74570B9D20C97A21003D48DD /* GoogleService-Info.plist */; };
+		7469080120C99B0000663F72 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746907FF20C99B0000663F72 /* SearchTableViewCell.swift */; };
+		7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7469080020C99B0000663F72 /* SearchTableViewCell.xib */; };
+		74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */; };
+		74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F82FB720C98FFE0073DCF6 /* SearchView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		74570B9920C978EB003D48DD /* PropertyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyKeys.swift; sourceTree = "<group>"; };
 		74570B9B20C9796B003D48DD /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 		74570B9D20C97A21003D48DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		746907FF20C99B0000663F72 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		7469080020C99B0000663F72 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		74F82FB720C98FFE0073DCF6 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.debug.xcconfig"; sourceTree = "<group>"; };
 		C84635E29B3773E39696135C /* Pods-Proxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,8 +94,10 @@
 		7414245020C97297009F3FD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */,
 				31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */,
 				74570B9420C978CC003D48DD /* LogInViewController.swift */,
+				746907FF20C99B0000663F72 /* SearchTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,7 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				31201DDF20C9803700A9B5E2 /* RegisterView.xib */,
+				74F82FB720C98FFE0073DCF6 /* SearchView.xib */,
 				74570B9520C978CC003D48DD /* LogInView.xib */,
+				7469080020C99B0000663F72 /* SearchTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,7 +218,9 @@
 			files = (
 				7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */,
 				31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */,
+				74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */,
 				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
+				7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
 			);
@@ -262,11 +276,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */,
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
 				31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */,
 				7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */,
 				74570B9C20C9796B003D48DD /* Listing.swift in Sources */,
 				74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */,
+				7469080120C99B0000663F72 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
