@@ -20,6 +20,8 @@
 		74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74570B9D20C97A21003D48DD /* GoogleService-Info.plist */; };
 		7469080120C99B0000663F72 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746907FF20C99B0000663F72 /* SearchTableViewCell.swift */; };
 		7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7469080020C99B0000663F72 /* SearchTableViewCell.xib */; };
+		7469080520C9F70300663F72 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469080320C9F70300663F72 /* CollectionViewCell.swift */; };
+		7469080620C9F70300663F72 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7469080420C9F70300663F72 /* CollectionViewCell.xib */; };
 		74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */; };
 		74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F82FB720C98FFE0073DCF6 /* SearchView.xib */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		74570B9D20C97A21003D48DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		746907FF20C99B0000663F72 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		7469080020C99B0000663F72 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		7469080320C9F70300663F72 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		7469080420C9F70300663F72 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		74F82FB720C98FFE0073DCF6 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 				31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */,
 				74570B9420C978CC003D48DD /* LogInViewController.swift */,
 				746907FF20C99B0000663F72 /* SearchTableViewCell.swift */,
+				7469080320C9F70300663F72 /* CollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				74F82FB720C98FFE0073DCF6 /* SearchView.xib */,
 				74570B9520C978CC003D48DD /* LogInView.xib */,
 				7469080020C99B0000663F72 /* SearchTableViewCell.xib */,
+				7469080420C9F70300663F72 /* CollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
 				7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
+				7469080620C9F70300663F72 /* CollectionViewCell.xib in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +285,7 @@
 			files = (
 				74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */,
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
+				7469080520C9F70300663F72 /* CollectionViewCell.swift in Sources */,
 				31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */,
 				7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */,
 				74570B9C20C9796B003D48DD /* Listing.swift in Sources */,
