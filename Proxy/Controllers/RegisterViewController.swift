@@ -25,24 +25,36 @@ class RegisterViewController: UIViewController {
     }
     
     func initialSetup() {
+        self.hideKeyboardWhenTappedAround() 
+        
         createAccountButton.layer.cornerRadius = 22.5
     }
 
     @IBAction func createAccount(_ sender: UIButton) {
-        print(usernameTextField.text! + "" + passwordTextField.text! + "" + emailTextField.text!)
         guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { (response, error) in
+
             if let error = error {
                 print(error.localizedDescription)
             }
             if let user = response?.user {
                 let changeRequest = user.createProfileChangeRequest()
                 changeRequest.displayName = username
-                print("User \(user) registered!")
+                changeRequest.commitChanges(completion: { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    else {
+                        print("User \(user.displayName) registered!")
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                })
+                
             }
         }
     }
+    
     
 }

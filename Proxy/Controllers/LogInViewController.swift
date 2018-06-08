@@ -30,6 +30,7 @@ class LogInViewController: UIViewController {
         loginButton.layer.cornerRadius = 22.5
         registerButton.addTarget(self, action: #selector(LogInViewController.registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(LogInViewController.loginWithUser), for: .touchUpInside)
+        self.hideKeyboardWhenTappedAround()
     }
     
     func resetValues() {
@@ -38,7 +39,7 @@ class LogInViewController: UIViewController {
     }
     
     @objc func loginWithUser() {
-        guard let email = emailTextField.text, let password = emailTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         Auth.auth().signIn(withEmail: email, password: password) { (response, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -55,6 +56,8 @@ class LogInViewController: UIViewController {
         let registerViewController = RegisterViewController()
         self.navigationController?.pushViewController(registerViewController, animated: true)
     }
+    
+    
 
     
 
