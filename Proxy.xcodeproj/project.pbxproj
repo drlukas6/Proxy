@@ -18,6 +18,7 @@
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
 		7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7414244520C9728A009F3FD2 /* Assets.xcassets */; };
 		7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */; };
+		7426222620CAB64A00FA3DB9 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7469080B20CAB3E800663F72 /* CollectionViewCell.xib */; };
 		74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9420C978CC003D48DD /* LogInViewController.swift */; };
 		74570B9720C978CC003D48DD /* LogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74570B9520C978CC003D48DD /* LogInView.xib */; };
 		74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74570B9920C978EB003D48DD /* PropertyKeys.swift */; };
@@ -26,7 +27,6 @@
 		7469080120C99B0000663F72 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746907FF20C99B0000663F72 /* SearchTableViewCell.swift */; };
 		7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7469080020C99B0000663F72 /* SearchTableViewCell.xib */; };
 		7469080520C9F70300663F72 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469080320C9F70300663F72 /* CollectionViewCell.swift */; };
-		7469080620C9F70300663F72 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7469080420C9F70300663F72 /* CollectionViewCell.xib */; };
 		74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */; };
 		74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F82FB720C98FFE0073DCF6 /* SearchView.xib */; };
 /* End PBXBuildFile section */
@@ -54,6 +54,7 @@
 		7469080020C99B0000663F72 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		7469080320C9F70300663F72 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7469080420C9F70300663F72 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		7469080B20CAB3E800663F72 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		74F82FB720C98FFE0073DCF6 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 				7414243C20C9728A009F3FD2 /* Products */,
 				D9CC8DC641DCCC6F6E0A60CE /* Pods */,
 				C2986A25966B9E3991B1B009 /* Frameworks */,
+				7469080820CAB2F800663F72 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +139,7 @@
 				7469080020C99B0000663F72 /* SearchTableViewCell.xib */,
 				2F6A6E9D20C9E55800BF328A /* ProfileTableViewCell.xib */,
 				2F6A6E9E20C9E55800BF328A /* ProfileView.xib */,
+				7469080B20CAB3E800663F72 /* CollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +167,14 @@
 				74570B9920C978EB003D48DD /* PropertyKeys.swift */,
 			);
 			path = PropertyKeys;
+			sourceTree = "<group>";
+		};
+		7469080820CAB2F800663F72 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				7469080420C9F70300663F72 /* CollectionViewCell.xib */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C2986A25966B9E3991B1B009 /* Frameworks */ = {
@@ -244,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7426222620CAB64A00FA3DB9 /* CollectionViewCell.xib in Resources */,
 				7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */,
 				31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */,
 				74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */,
@@ -252,7 +264,6 @@
 				2F6A6EA020C9E55800BF328A /* ProfileView.xib in Resources */,
 				2F6A6E9F20C9E55800BF328A /* ProfileTableViewCell.xib in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
-				7469080620C9F70300663F72 /* CollectionViewCell.xib in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
