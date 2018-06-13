@@ -37,9 +37,10 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     func setupView() {
         setLocationTextField.delegate = self
         imageUploadedLabel.isHidden = true
-        addImagesButton.layer.cornerRadius = 20
-        submitButton.layer.cornerRadius = 20
-        descriptionTextField.layer.cornerRadius = 5
+        addImagesButton.layer.cornerRadius = 20.0
+        submitButton.layer.cornerRadius = 20.0
+        locationMap.layer.cornerRadius = 20.0
+        descriptionTextField.layer.cornerRadius = 5.0
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -97,8 +98,6 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             imageData = UIImagePNGRepresentation(image)
             self.imageUploadedLabel.text = "Image has been uploaded."
             self.imageUploadedLabel.isHidden = false
-//            print(imageData?.base64EncodedString())
-            //nesto
         }
         else {
             print("error: image did not load")
