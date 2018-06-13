@@ -12,9 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Proxy" customModuleProvider="target">
             <connections>
-                <outlet property="CategoriesTableView" destination="qF9-gX-aYk" id="Bbg-g6-HIX"/>
-                <outlet property="ProfileButton" destination="QxO-Ud-Hoi" id="wmd-Vn-bqK"/>
-                <outlet property="SearchBar" destination="87R-8U-QmW" id="W62-ub-Cd9"/>
+                <outlet property="profileButton" destination="QxO-Ud-Hoi" id="sV0-Ev-Zgm"/>
+                <outlet property="searchBar" destination="87R-8U-QmW" id="oXm-en-7sF"/>
+                <outlet property="tableSearch" destination="qF9-gX-aYk" id="zYv-B1-rBc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

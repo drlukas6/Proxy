@@ -10,9 +10,16 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imageCollectionView: UIImageView!
+    @IBOutlet weak var titleCollectionView: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func setUpCollectionViewCell() {
+        titleCollectionView.text = ""
+        imageCollectionView.image = UIImage(data: Data())
+    }
 }
