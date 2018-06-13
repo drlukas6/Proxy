@@ -24,9 +24,6 @@ struct ChatChannel {
         self.init(id: "\(listing.ownerId) - \(String(describing: Auth.auth().currentUser?.uid))", listingOwner: listing.ownerDisplayName, own: (Auth.auth().currentUser?.displayName)!)
     }
     
-    private func checkIfPresent() -> Bool {
-        
-    }
 }
 
 struct ChatItem {

@@ -61,6 +61,7 @@ class LogInViewController: UIViewController {
     }
     
     @objc func testChat() {
+        DatabaseHelper.init().createBasicListing()
         let cVC = ChatViewController()
         self.present(cVC, animated: true, completion: nil)
     }

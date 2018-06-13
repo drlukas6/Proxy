@@ -18,9 +18,8 @@ struct DatabaseHelper {
         return BaseReference.child("Listings")
     }
     
-    
     func createBasicListing() {
         let listing = Listing(title: "Audi", owner: "NF89432NF2923", ownerDisplayName: "Adolf", price: 999, description: "foo", imageData: [], location: "-1.492, 2.423")
-        
+        ListingsReference.child(listing.id).setValue(listing.databaseFormat())
     }
 }
