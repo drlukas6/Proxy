@@ -38,6 +38,7 @@ class Listing {
             }
             return tmp
         }
+        
         return [ListingKeys.title : self.title, ListingKeys.ownerId: self.ownerId, ListingKeys.ownerDisplayName : self.ownerDisplayName, ListingKeys.price: self.price, ListingKeys.description: self.description, ListingKeys.imageData: dataString, ListingKeys.location: self.location]
     }
 }
