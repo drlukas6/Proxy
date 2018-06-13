@@ -7,6 +7,7 @@ target 'Proxy' do
 	pod 'FirebaseCore', '~> 5.0'
 	pod 'FirebaseAuth', '~> 5.0'
 	pod 'FirebaseDatabase', '~> 5.0'
+	pod 'JSQMessagesViewController'
   # Pods for Proxy
 
 end

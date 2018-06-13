@@ -36,6 +36,7 @@ class LogInViewController: UIViewController {
     func resetValues() {
         emailTextField.text = ""
         passwordTextField.text = ""
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     @objc func loginWithUser() {

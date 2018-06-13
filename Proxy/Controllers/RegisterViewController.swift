@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
-    @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,9 +19,13 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialSetup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     
     func initialSetup() {
         self.hideKeyboardWhenTappedAround() 
