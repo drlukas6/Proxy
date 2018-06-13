@@ -27,6 +27,7 @@ struct ListingKeys {
     static let description = "description"
     static let imageData = "imageData"
     static let location = "location"
+    static let category = "category"
 }
 
 

@@ -15,6 +15,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableSearch: UITableView!
     
     var categorieList: [[String : UIImage]]! = [["Auti" : #imageLiteral(resourceName: "losauto")]]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
