@@ -15,6 +15,8 @@
 		2F6A6EA020C9E55800BF328A /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A6E9E20C9E55800BF328A /* ProfileView.xib */; };
 		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
 		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
+		31F7659D20D14D840094C2E5 /* AddListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7659B20D14D840094C2E5 /* AddListingViewController.swift */; };
+		31F7659E20D14D840094C2E5 /* AddListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F7659C20D14D840094C2E5 /* AddListingViewController.xib */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
 		7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7414244520C9728A009F3FD2 /* Assets.xcassets */; };
 		7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */; };
@@ -40,6 +42,8 @@
 		2F6A6E9E20C9E55800BF328A /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		31F7659B20D14D840094C2E5 /* AddListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListingViewController.swift; sourceTree = "<group>"; };
+		31F7659C20D14D840094C2E5 /* AddListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListingViewController.xib; sourceTree = "<group>"; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7414243E20C9728A009F3FD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7414244520C9728A009F3FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				74570B9420C978CC003D48DD /* LogInViewController.swift */,
 				746907FF20C99B0000663F72 /* SearchTableViewCell.swift */,
 				7469080320C9F70300663F72 /* CollectionViewCell.swift */,
+				31F7659B20D14D840094C2E5 /* AddListingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				2F6A6E9D20C9E55800BF328A /* ProfileTableViewCell.xib */,
 				2F6A6E9E20C9E55800BF328A /* ProfileView.xib */,
 				7469080B20CAB3E800663F72 /* CollectionViewCell.xib */,
+				31F7659C20D14D840094C2E5 /* AddListingViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			files = (
 				7426222620CAB64A00FA3DB9 /* CollectionViewCell.xib in Resources */,
 				7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */,
+				31F7659E20D14D840094C2E5 /* AddListingViewController.xib in Resources */,
 				31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */,
 				74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */,
 				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
@@ -329,6 +336,7 @@
 				2F6A6E9B20C9E54600BF328A /* ProfileViewController.swift in Sources */,
 				74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */,
 				7469080120C99B0000663F72 /* SearchTableViewCell.swift in Sources */,
+				31F7659D20D14D840094C2E5 /* AddListingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
