@@ -56,12 +56,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info [UIImagePickerControllerOriginalImage] as? UIImage {
-            let storage = Storage.storage()
-            
             imageData = UIImagePNGRepresentation(image)
-            
-            let storageRef = storage.reference()
-            var imageRef = storageRef.child("images/\()")
 //            print(imageData?.base64EncodedString())
             //nesto
         }
@@ -71,11 +66,43 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         picker.dismiss(animated: true, completion: nil)
     }
     @IBAction func submit(_ sender: Any) {
-        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), let dataImage = imageData else { return }
+        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), let imageURL = addToStorage() else { return }
         
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [URL(string: "")!], location: "-2,424213, 6.231535", category: Category.clothing)
+        
+        
+        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [imageURL], location: "-2,424213, 6.231535", category: Category.clothing)
+        
         DatabaseHelper.init().ListingsReference.child(listing.id).setValue(listing.databaseFormat())
+    
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func addToStorage() -> URL? {
+        guard let image = imageData else {
+            return nil
+        }
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        var imageRef = storageRef.child("images/lala.png")
+        _ = imageRef.putData(image, metadata: nil, completion: { (metadata, error) in
+            guard let error = error else {
+                print("error")
+                return
+            }
+        })
+        var imageURL : URL?
+        
+        imageRef.downloadURL { (urlImage, error) in
+            if let error = error {
+                print("Error")
+            }
+            else {
+                imageURL = urlImage
+            }
+        }
+        return imageURL
+        
     }
 }
