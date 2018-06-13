@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import FirebaseAuth
+import FirebaseStorage
 
 class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -67,7 +68,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBAction func submit(_ sender: Any) {
         guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), let dataImage = imageData else { return }
         
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [dataImage], location: "-2,424213, 6.231535")
+        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [URL(string: "")!], location: "-2,424213, 6.231535", category: Category.clothing)
         DatabaseHelper.init().ListingsReference.child(listing.id).setValue(listing.databaseFormat())
         
         self.navigationController?.popViewController(animated: true)
