@@ -19,7 +19,7 @@ class CollectionViewCell: UICollectionViewCell {
     }
 
     func setUpCollectionViewCell() {
-        titleCollectionView.text = ""
-        imageCollectionView.image = UIImage(data: Data())
+        titleCollectionView.text = "Test"
+        imageCollectionView.image = UIImage(named: "losauto")
     }
 }

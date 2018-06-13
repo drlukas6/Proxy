@@ -11,9 +11,10 @@ import UIKit
 class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var categorieCollectionView: UICollectionView!
     @IBOutlet weak var categorieTitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        initialSetup()
     }
     
     
@@ -23,16 +24,33 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
         // Configure the view for the selected state
     }
     
+    func initialSetup() {
+        categorieCollectionView.delegate = self
+        categorieCollectionView.dataSource = self
+        categorieCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionId")
+    }
+    
     func setUpTableViewCell(category: Category) {
         self.categorieTitle.text = category.rawValue
         }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
+        let cell = categorieCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionId", for: indexPath) as! CollectionViewCell
+        cell.setUpCollectionViewCell()
         return cell
     }
+    
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    
+    
 }

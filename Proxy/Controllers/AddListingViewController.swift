@@ -29,10 +29,6 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        titleTextField.text = ""
-//        priceTextField.text = ""
-//        descriptionTextField.text = ""
         self.navigationController?.navigationBar.isHidden = false
     }
     

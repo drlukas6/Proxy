@@ -27,6 +27,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return categorieList.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! SearchTableViewCell
         cell.setUpTableViewCell(category: categorieList[indexPath.row])
@@ -35,9 +39,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     
+    
     func initialSetup() {
         tableSearch.dataSource = self
         tableSearch.delegate = self
+        tableSearch.estimatedRowHeight = 100
         tableSearch.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
     }
 }
