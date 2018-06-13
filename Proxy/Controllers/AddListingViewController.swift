@@ -56,7 +56,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info [UIImagePickerControllerOriginalImage] as? UIImage {
+            let storage = Storage.storage()
+            
             imageData = UIImagePNGRepresentation(image)
+            
+            let storageRef = storage.reference()
+            var imageRef = storageRef.child("images/\()")
 //            print(imageData?.base64EncodedString())
             //nesto
         }
