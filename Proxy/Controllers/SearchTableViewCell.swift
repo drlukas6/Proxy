@@ -8,8 +8,7 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
-
+class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var categorieCollectionView: UICollectionView!
     @IBOutlet weak var categorieTitle: UILabel!
     override func awakeFromNib() {
@@ -17,25 +16,6 @@ class SearchTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func setCollectionViewDataSourceDelegate
-        <D: UICollectionViewDataSource & UICollectionViewDelegate>
-        (dataSourceDelegate: D, forRow row: Int) {
-        
-        categorieCollectionView.delegate = dataSourceDelegate
-        categorieCollectionView.dataSource = dataSourceDelegate
-        categorieCollectionView.tag = row
-        categorieCollectionView.reloadData()
-    }
-    
-    var collectionViewOffset: CGFloat {
-        get {
-            return categorieCollectionView.contentOffset.x
-        }
-        
-        set {
-            categorieCollectionView.contentOffset.x = newValue
-        }
-    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -43,10 +23,16 @@ class SearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpTableViewCell() {
-        categorieTitle.text = ""
-//        categorieCollectionView.setUpCollectionViewCell()
+    func setUpTableViewCell(category: Category) {
+        self.categorieTitle.text = category.rawValue
         }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
+        return cell
+    }
 }

@@ -50,8 +50,7 @@ class LogInViewController: UIViewController {
             if let user = response?.user {
                 print("User \(user) logged in!")
                 let searchViewController = SearchViewController()
-                let addListing = AddListingViewController()
-                self.navigationController?.pushViewController(addListing, animated: true)
+                self.navigationController?.pushViewController(searchViewController, animated: true)
             }
         }
     }
