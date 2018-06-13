@@ -16,11 +16,11 @@ class Listing {
     let ownerDisplayName: String
     let price: Float
     let description: String
-    let imageData: [URL]
+    var imageData: [String]
     let location: String
     let category: Category
     
-    init(title: String, owner: String, ownerDisplayName: String, price: Float, description: String, imageData: [URL], location: String, category: Category) {
+    init(title: String, owner: String, ownerDisplayName: String, price: Float, description: String, imageData: [String], location: String, category: Category) {
         self.id = UUID().uuidString
         self.title = title
         self.ownerId = owner

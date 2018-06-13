@@ -66,43 +66,41 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         picker.dismiss(animated: true, completion: nil)
     }
     @IBAction func submit(_ sender: Any) {
-        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), let imageURL = addToStorage() else { return }
+        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString) else { return }
         
+        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: "-2,424213, 6.231535", category: Category.clothing)
         
-        
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [imageURL], location: "-2,424213, 6.231535", category: Category.clothing)
-        
-        DatabaseHelper.init().ListingsReference.child(listing.id).setValue(listing.databaseFormat())
-    
+        addToStorage(listing: listing, data: imageData)
         
         self.navigationController?.popViewController(animated: true)
     }
     
-    func addToStorage() -> URL? {
-        guard let image = imageData else {
-            return nil
+    func addToStorage(listing: Listing, data: Data?) {
+        guard let data = data else {
+            print("Error no data grabbed")
+            return
         }
-        
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        var imageRef = storageRef.child("images/lala.png")
-        _ = imageRef.putData(image, metadata: nil, completion: { (metadata, error) in
-            guard let error = error else {
+        let imageRef = storageRef.child("images/\(listing.id).png")
+        _ = imageRef.putData(data, metadata: nil, completion: { (metadata, error) in
+            if error != nil  {
                 print("error")
                 return
             }
-        })
-        var imageURL : URL?
-        
-        imageRef.downloadURL { (urlImage, error) in
-            if let error = error {
-                print("Error")
-            }
             else {
-                imageURL = urlImage
+                imageRef.downloadURL(completion: { (url, error) in
+                    if let error = error {
+                        print (error)
+                    }
+                    else {
+                        if let url = url {
+                            listing.imageData = [url.absoluteString]
+                            DatabaseHelper.init().ListingsReference.child(listing.id).setValue(listing.databaseFormat())
+                        }
+                    }
+                })
             }
-        }
-        return imageURL
-        
+        })
     }
 }
