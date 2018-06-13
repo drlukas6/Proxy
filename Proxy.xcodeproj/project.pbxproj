@@ -19,6 +19,8 @@
 		2F9D1EC020D1660000E7C4A4 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D1EBF20D1660000E7C4A4 /* DatabaseHelper.swift */; };
 		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
 		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
+		31B241A920D1758B00F72B7B /* AddListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B241A820D1758B00F72B7B /* AddListingViewController.swift */; };
+		31B241AB20D1759300F72B7B /* AddListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B241AA20D1759300F72B7B /* AddListingViewController.xib */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
 		7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7414244520C9728A009F3FD2 /* Assets.xcassets */; };
 		7414244920C9728A009F3FD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414244720C9728A009F3FD2 /* LaunchScreen.storyboard */; };
@@ -48,6 +50,8 @@
 		2F9D1EBF20D1660000E7C4A4 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		31B241A820D1758B00F72B7B /* AddListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListingViewController.swift; sourceTree = "<group>"; };
+		31B241AA20D1759300F72B7B /* AddListingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddListingViewController.xib; sourceTree = "<group>"; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7414243E20C9728A009F3FD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7414244520C9728A009F3FD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		7414245020C97297009F3FD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				31B241A820D1758B00F72B7B /* AddListingViewController.swift */,
 				2F6A6E9A20C9E54600BF328A /* ProfileTableViewCell.swift */,
 				2F6A6E9920C9E54600BF328A /* ProfileViewController.swift */,
 				74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */,
@@ -152,6 +157,7 @@
 		7414245120C97299009F3FD2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31B241AA20D1759300F72B7B /* AddListingViewController.xib */,
 				31201DDF20C9803700A9B5E2 /* RegisterView.xib */,
 				74F82FB720C98FFE0073DCF6 /* SearchView.xib */,
 				74570B9520C978CC003D48DD /* LogInView.xib */,
@@ -287,6 +293,7 @@
 				2F6A6E9F20C9E55800BF328A /* ProfileTableViewCell.xib in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
+				31B241AB20D1759300F72B7B /* AddListingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +371,7 @@
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
 				2F6A6E9C20C9E54600BF328A /* ProfileTableViewCell.swift in Sources */,
 				7469080520C9F70300663F72 /* CollectionViewCell.swift in Sources */,
+				31B241A920D1758B00F72B7B /* AddListingViewController.swift in Sources */,
 				31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */,
 				7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */,
 				74570B9C20C9796B003D48DD /* Listing.swift in Sources */,

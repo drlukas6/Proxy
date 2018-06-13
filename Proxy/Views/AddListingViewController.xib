@@ -188,8 +188,5 @@
         <namedColor name="seaBlue">
             <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="seaBlue">
-            <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
