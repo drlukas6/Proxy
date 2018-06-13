@@ -15,6 +15,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var chat: UIButton!
     
     
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class LogInViewController: UIViewController {
         loginButton.layer.cornerRadius = 22.5
         registerButton.addTarget(self, action: #selector(LogInViewController.registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(LogInViewController.loginWithUser), for: .touchUpInside)
+        chat.addTarget(self, action: #selector(LogInViewController.testChat), for: .touchUpInside)
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -56,6 +58,11 @@ class LogInViewController: UIViewController {
     @objc func registerUser() {
         let registerViewController = RegisterViewController()
         self.navigationController?.pushViewController(registerViewController, animated: true)
+    }
+    
+    @objc func testChat() {
+        let cVC = ChatViewController()
+        self.present(cVC, animated: true, completion: nil)
     }
     
     

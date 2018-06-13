@@ -13,6 +13,10 @@
 		2F6A6E9C20C9E54600BF328A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A6E9A20C9E54600BF328A /* ProfileTableViewCell.swift */; };
 		2F6A6E9F20C9E55800BF328A /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A6E9D20C9E55800BF328A /* ProfileTableViewCell.xib */; };
 		2F6A6EA020C9E55800BF328A /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A6E9E20C9E55800BF328A /* ProfileView.xib */; };
+		2F9D1EBA20D156E400E7C4A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D1EB820D156E400E7C4A4 /* ChatViewController.swift */; };
+		2F9D1EBB20D156E400E7C4A4 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9D1EB920D156E400E7C4A4 /* ChatView.xib */; };
+		2F9D1EBD20D15B2F00E7C4A4 /* ChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D1EBC20D15B2F00E7C4A4 /* ChatHelper.swift */; };
+		2F9D1EC020D1660000E7C4A4 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D1EBF20D1660000E7C4A4 /* DatabaseHelper.swift */; };
 		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
 		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
@@ -38,6 +42,10 @@
 		2F6A6E9A20C9E54600BF328A /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		2F6A6E9D20C9E55800BF328A /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		2F6A6E9E20C9E55800BF328A /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		2F9D1EB820D156E400E7C4A4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2F9D1EB920D156E400E7C4A4 /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
+		2F9D1EBC20D15B2F00E7C4A4 /* ChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelper.swift; sourceTree = "<group>"; };
+		2F9D1EBF20D1660000E7C4A4 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +89,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2F9D1EBE20D165D800E7C4A4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2F9D1EBC20D15B2F00E7C4A4 /* ChatHelper.swift */,
+				2F9D1EBF20D1660000E7C4A4 /* DatabaseHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		7414243220C9728A009F3FD2 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +124,7 @@
 				74570B9D20C97A21003D48DD /* GoogleService-Info.plist */,
 				74570B9820C978DB003D48DD /* PropertyKeys */,
 				7414245320C972C4009F3FD2 /* Supporting Files */,
+				2F9D1EBE20D165D800E7C4A4 /* Helpers */,
 				7414245220C9729B009F3FD2 /* Models */,
 				7414245120C97299009F3FD2 /* Views */,
 				7414245020C97297009F3FD2 /* Controllers */,
@@ -123,6 +141,7 @@
 				2F6A6E9920C9E54600BF328A /* ProfileViewController.swift */,
 				74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */,
 				31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */,
+				2F9D1EB820D156E400E7C4A4 /* ChatViewController.swift */,
 				74570B9420C978CC003D48DD /* LogInViewController.swift */,
 				746907FF20C99B0000663F72 /* SearchTableViewCell.swift */,
 				7469080320C9F70300663F72 /* CollectionViewCell.swift */,
@@ -140,6 +159,7 @@
 				2F6A6E9D20C9E55800BF328A /* ProfileTableViewCell.xib */,
 				2F6A6E9E20C9E55800BF328A /* ProfileView.xib */,
 				7469080B20CAB3E800663F72 /* CollectionViewCell.xib */,
+				2F9D1EB920D156E400E7C4A4 /* ChatView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +281,7 @@
 				31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */,
 				74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */,
 				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
+				2F9D1EBB20D156E400E7C4A4 /* ChatView.xib in Resources */,
 				7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */,
 				2F6A6EA020C9E55800BF328A /* ProfileView.xib in Resources */,
 				2F6A6E9F20C9E55800BF328A /* ProfileTableViewCell.xib in Resources */,
@@ -348,6 +369,9 @@
 				74570B9C20C9796B003D48DD /* Listing.swift in Sources */,
 				2F6A6E9B20C9E54600BF328A /* ProfileViewController.swift in Sources */,
 				74570B9A20C978EB003D48DD /* PropertyKeys.swift in Sources */,
+				2F9D1EC020D1660000E7C4A4 /* DatabaseHelper.swift in Sources */,
+				2F9D1EBA20D156E400E7C4A4 /* ChatViewController.swift in Sources */,
+				2F9D1EBD20D15B2F00E7C4A4 /* ChatHelper.swift in Sources */,
 				7469080120C99B0000663F72 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
