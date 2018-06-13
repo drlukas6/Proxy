@@ -43,4 +43,10 @@ class SearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setUpTableViewCell() {
+        categorieTitle.text = ""
+        categorieCollectionView.setUpCollectionViewCell()
+        }
+    
+    
 }
