@@ -11,7 +11,7 @@ import MapKit
 import FirebaseAuth
 import FirebaseStorage
 
-class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -19,6 +19,8 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var addImagesButton: UIButton!
     @IBOutlet weak var locationMap: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var imageUploadedLabel: UILabel!
+    @IBOutlet weak var setLocationTextField: UITextField!
     
     var imageData : Data?
     
@@ -33,17 +35,57 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func setupView() {
+        setLocationTextField.delegate = self
+        imageUploadedLabel.isHidden = true
         addImagesButton.layer.cornerRadius = 20
         submitButton.layer.cornerRadius = 20
         descriptionTextField.layer.cornerRadius = 5
         self.hideKeyboardWhenTappedAround()
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let adress = setLocationTextField.text else {
+            return
+        }
+        
+        setLocationTextField.resignFirstResponder()
+        
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = adress
+        
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        
+        activeSearch.start { (response, error) in
+            if response == nil {
+                print("error, adress not found")
+            }
+            else {
+                let annotations = self.locationMap.annotations
+                self.locationMap.removeAnnotations(annotations)
+                
+                let longitude = response?.boundingRegion.center.longitude
+                let latitude = response?.boundingRegion.center.latitude
+                
+                if let longitude = longitude ,let latitude = latitude {
+                    let annotation = MKPointAnnotation()
+                    annotation.title = adress
+                    annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+                    self.locationMap.addAnnotation(annotation)
+                    
+                    let location = CLLocationCoordinate2DMake(latitude, longitude)
+                    let span = MKCoordinateSpanMake(0.01, 0.01)
+                    let region = MKCoordinateRegionMake(location, span)
+                    self.locationMap.setRegion(region, animated: true)
+                }
+            }
+        }
+    }
+    
     @IBAction func addImages(_ sender: Any) {
         let image = UIImagePickerController ()
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         image.allowsEditing = false
         
@@ -53,6 +95,8 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info [UIImagePickerControllerOriginalImage] as? UIImage {
             imageData = UIImagePNGRepresentation(image)
+            self.imageUploadedLabel.text = "Image has been uploaded."
+            self.imageUploadedLabel.isHidden = false
 //            print(imageData?.base64EncodedString())
             //nesto
         }
@@ -61,10 +105,14 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func submit(_ sender: Any) {
+        let latitude = locationMap.annotations[0].coordinate.latitude
+        let longitude = locationMap.annotations[0].coordinate.longitude
+
         guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString) else { return }
         
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: "-2,424213, 6.231535", category: Category.clothing)
+        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: Category.clothing)
         
         addToStorage(listing: listing, data: imageData)
         
