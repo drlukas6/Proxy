@@ -14,12 +14,23 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addNewListingButton: UIButton!
     
     let cellId : String = "CellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupView()
+    }
+    
+    func setupView() {
+        addNewListingButton.layer.cornerRadius = 17
+    }
+    
+    @IBAction func addNewListing(_ sender: Any) {
+        let vc = AddListingViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

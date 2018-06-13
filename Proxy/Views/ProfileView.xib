@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Proxy" customModuleProvider="target">
             <connections>
+                <outlet property="addNewListingButton" destination="uti-uF-rtx" id="uxN-rj-hmc"/>
                 <outlet property="emailLabel" destination="SlJ-Gb-xdG" id="A3n-dc-qeg"/>
                 <outlet property="profileImage" destination="Wrw-hA-jRv" id="Uze-J2-yNK"/>
                 <outlet property="tableView" destination="Hdw-2m-LkP" id="C8w-9J-zif"/>
@@ -43,15 +46,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlJ-Gb-xdG">
-                    <rect key="frame" x="94" y="202" width="187.5" height="21"/>
+                    <rect key="frame" x="94" y="202" width="262.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDC-Rl-4HZ">
-                    <rect key="frame" x="297.5" y="202" width="61.5" height="30"/>
-                    <state key="normal" title="Change"/>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Listings :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edD-NV-FQo">
                     <rect key="frame" x="16" y="239" width="108" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -62,23 +61,36 @@
                     <rect key="frame" x="0.0" y="276" width="375" height="391"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uti-uF-rtx">
+                    <rect key="frame" x="219" y="239" width="140" height="34"/>
+                    <color key="backgroundColor" name="seaBlue"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="bop-oc-KNV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Add new listing">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="addNewListing:" destination="-1" eventType="touchUpInside" id="rE7-Ft-o9y"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="lightGreen"/>
             <constraints>
                 <constraint firstItem="Wrw-hA-jRv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="3SV-ZO-fs9"/>
                 <constraint firstItem="SlJ-Gb-xdG" firstAttribute="top" secondItem="GY0-D1-X0z" secondAttribute="bottom" constant="16" id="3Sd-V1-Cch"/>
                 <constraint firstItem="5JD-RX-46d" firstAttribute="top" secondItem="GY0-D1-X0z" secondAttribute="bottom" constant="16" id="6JI-Sr-2Ma"/>
                 <constraint firstItem="5JD-RX-46d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6dX-jS-f7S"/>
                 <constraint firstItem="GY0-D1-X0z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="9M7-UD-538"/>
-                <constraint firstItem="KDC-Rl-4HZ" firstAttribute="leading" secondItem="SlJ-Gb-xdG" secondAttribute="trailing" constant="16" id="L46-Fd-mN6"/>
                 <constraint firstItem="Hdw-2m-LkP" firstAttribute="top" secondItem="edD-NV-FQo" secondAttribute="bottom" constant="16" id="LNK-fS-2bu"/>
                 <constraint firstItem="Wrw-hA-jRv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Mkj-aH-c2s"/>
-                <constraint firstItem="SlJ-Gb-xdG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="NLm-j6-dgl"/>
+                <constraint firstItem="SlJ-Gb-xdG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.7" id="NLm-j6-dgl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hdw-2m-LkP" secondAttribute="trailing" id="Q27-QX-yUC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KDC-Rl-4HZ" secondAttribute="trailing" constant="16" id="X0L-CD-rZv"/>
                 <constraint firstItem="SlJ-Gb-xdG" firstAttribute="leading" secondItem="5JD-RX-46d" secondAttribute="trailing" constant="16" id="YDs-sb-dPZ"/>
-                <constraint firstItem="KDC-Rl-4HZ" firstAttribute="top" secondItem="GY0-D1-X0z" secondAttribute="bottom" constant="16" id="YOb-yZ-lXc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uti-uF-rtx" secondAttribute="trailing" constant="16" id="bwi-qJ-VEo"/>
                 <constraint firstItem="GY0-D1-X0z" firstAttribute="top" secondItem="Wrw-hA-jRv" secondAttribute="bottom" constant="16" id="dVP-UU-hnJ"/>
+                <constraint firstItem="uti-uF-rtx" firstAttribute="top" secondItem="SlJ-Gb-xdG" secondAttribute="bottom" constant="16" id="eMI-vT-sFR"/>
                 <constraint firstItem="Wrw-hA-jRv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.3" id="hv9-JL-fxb"/>
                 <constraint firstItem="edD-NV-FQo" firstAttribute="top" secondItem="5JD-RX-46d" secondAttribute="bottom" constant="16" id="jQm-wU-guA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Hdw-2m-LkP" secondAttribute="bottom" id="npq-73-NZC"/>
@@ -98,4 +110,12 @@
             <point key="canvasLocation" x="261" y="235"/>
         </label>
     </objects>
+    <resources>
+        <namedColor name="lightGreen">
+            <color red="0.89411764705882357" green="0.99215686274509807" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="seaBlue">
+            <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

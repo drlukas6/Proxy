@@ -19,13 +19,14 @@ struct NibNames {
     static let searchTableCell = "SearchTableViewCell"
 }
 
-struct Titles{
-    static let title1 = "title1"
-    static let title2 = "title2"
-    static let title3 = "title3"
-    static let title4 = "title4"
-    static let title5 = "title5"
+struct ListingKeys {
+    static let title = "title"
+    static let ownerId = "ownerId"
+    static let ownerDisplayName = "ownerDisplayName"
+    static let price = "price"
+    static let description = "description"
+    static let imageData = "imageData"
+    static let location = "location"
 }
-
 
 
