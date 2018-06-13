@@ -45,7 +45,7 @@ class SearchTableViewCell: UITableViewCell {
     
     func setUpTableViewCell() {
         categorieTitle.text = ""
-        categorieCollectionView.setUpCollectionViewCell()
+//        categorieCollectionView.setUpCollectionViewCell()
         }
     
     

@@ -29,9 +29,9 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         
-        titleTextField.text = ""
-        priceTextField.text = ""
-        descriptionTextField.text = ""
+//        titleTextField.text = ""
+//        priceTextField.text = ""
+//        descriptionTextField.text = ""
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -39,13 +39,14 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         addImagesButton.layer.cornerRadius = 20
         submitButton.layer.cornerRadius = 20
         descriptionTextField.layer.cornerRadius = 5
+        self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func addImages(_ sender: Any) {
         let image = UIImagePickerController ()
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         image.allowsEditing = false
         
@@ -55,11 +56,13 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info [UIImagePickerControllerOriginalImage] as? UIImage {
             imageData = UIImagePNGRepresentation(image)
+//            print(imageData?.base64EncodedString())
             //nesto
         }
         else {
             print("error: image did not load")
         }
+        picker.dismiss(animated: true, completion: nil)
     }
     @IBAction func submit(_ sender: Any) {
         guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), let dataImage = imageData else { return }
