@@ -75,7 +75,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBY-jb-7uS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nike" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-rO-Ytd">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nike" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-rO-Ytd">
                                             <rect key="frame" x="9.5" y="0.0" width="356" height="200"/>
                                         </imageView>
                                     </subviews>

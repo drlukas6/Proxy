@@ -22,4 +22,8 @@ struct DatabaseHelper {
         let listing = Listing(title: "Audi", owner: "NF89432NF2923", ownerDisplayName: "Adolf", price: 999, description: "foo", imageData: [], location: "-1.492, 2.423", category: Category.drinks)
         ListingsReference.child(listing.id).setValue(listing.databaseFormat())
     }
+    
+    func getChatReference(for channel: ChatChannel) -> DatabaseReference {
+        return ChatsReference.child(channel.id)
+    }
 }

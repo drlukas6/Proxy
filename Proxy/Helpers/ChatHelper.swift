@@ -13,15 +13,17 @@ struct ChatChannel {
     let id: String
     let listingOwnerDisplayName: String
     let ownDisplayName: String
+    let listingItem: String
     
-    init(id: String, listingOwner: String, own: String) {
+    init(id: String, listingOwner: String, own: String, listingTitle: String) {
         self.id = id
         self.listingOwnerDisplayName = listingOwner
         self.ownDisplayName = own
+        self.listingItem = listingTitle
     }
     
     init(listing: Listing) {
-        self.init(id: "\(listing.ownerId) - \(String(describing: Auth.auth().currentUser?.uid))", listingOwner: listing.ownerDisplayName, own: (Auth.auth().currentUser?.displayName)!)
+        self.init(id: "\(listing.ownerId)-\(String(describing: Auth.auth().currentUser?.uid))", listingOwner: listing.ownerDisplayName, own: (Auth.auth().currentUser?.displayName)!, listingTitle: listing.title)
     }
     
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseAuth
 
 class ListingViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class ListingViewController: UIViewController {
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var mainScrollView: UIScrollView!
     
+    var listing: Listing!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +30,20 @@ class ListingViewController: UIViewController {
     
     func initialSetup() {
         listingImage.layer.cornerRadius = 20.0
+        listingImage.layer.masksToBounds = true
         listingLocation.layer.cornerRadius = 20.0
         listingDescription.layer.cornerRadius = 20.0
         contactButton.layer.cornerRadius = contactButton.bounds.height / 2
+    }
+    
+    @objc func startChat() {
+        let channel = ChatChannel(listing: listing)
+        let channelDbReference = DatabaseHelper.init().getChatReference(for: channel)
+        let chatVC = ChatViewController()
+        chatVC.senderId = Auth.auth().currentUser!.uid
+        chatVC.senderDisplayName = Auth.auth().currentUser?.displayName
+        chatVC.channel = channel
+        chatVC.channelReference = channelDbReference
     }
 
 
