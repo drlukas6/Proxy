@@ -52,7 +52,7 @@ class LogInViewController: UIViewController {
                 let searchViewController = SearchViewController()
                 let addL = AddListingViewController()
                 let l = ListingViewController()
-                self.navigationController?.pushViewController(l, animated: true)
+                self.navigationController?.pushViewController(addL, animated: true)
             }
         }
     }

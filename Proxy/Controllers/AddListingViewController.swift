@@ -11,7 +11,7 @@ import MapKit
 import FirebaseAuth
 import FirebaseStorage
 
-class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -21,6 +21,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var imageUploadedLabel: UILabel!
     @IBOutlet weak var setLocationTextField: UITextField!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
     
     var imageData : Data?
     
@@ -36,6 +42,11 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     func setupView() {
         setLocationTextField.delegate = self
+        titleTextField.delegate = self
+        priceTextField.delegate = self
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        categoryPicker.selectRow(3, inComponent: 0, animated: true)
         imageUploadedLabel.isHidden = true
         addImagesButton.layer.cornerRadius = 20.0
         submitButton.layer.cornerRadius = 20.0
@@ -43,40 +54,88 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         descriptionTextField.layer.cornerRadius = 5.0
         self.hideKeyboardWhenTappedAround()
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (textField.tag == 1) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.titleLabel.isHidden = false
+                self.titleLabel.textColor = UIColor.gray
+            }, completion: nil)
+            print("title is being edited")
+        }
+        else if textField.tag == 2 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.priceLabel.isHidden = false
+                self.priceLabel.textColor = UIColor.gray
+            }, completion: nil)
+            print("price is being edited")
+        }
+        else if textField.tag == 3 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.locationLabel.isHidden = false
+                self.locationLabel.textColor = UIColor.gray
+            }, completion: nil)
+            print("location is being edited")
+        }
+    }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let adress = setLocationTextField.text else {
-            return
-        }
         
-        setLocationTextField.resignFirstResponder()
-        
-        let searchRequest = MKLocalSearchRequest()
-        searchRequest.naturalLanguageQuery = adress
-        
-        let activeSearch = MKLocalSearch(request: searchRequest)
-        
-        activeSearch.start { (response, error) in
-            if response == nil {
-                print("error, adress not found")
+        if textField.tag == 1 {
+            if textField.text?.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.titleLabel.isHidden = true
+                }, completion: nil)
             }
-            else {
-                let annotations = self.locationMap.annotations
-                self.locationMap.removeAnnotations(annotations)
-                
-                let longitude = response?.boundingRegion.center.longitude
-                let latitude = response?.boundingRegion.center.latitude
-                
-                if let longitude = longitude ,let latitude = latitude {
-                    let annotation = MKPointAnnotation()
-                    annotation.title = adress
-                    annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-                    self.locationMap.addAnnotation(annotation)
+        }
+        else if textField.tag == 2 {
+            if textField.text?.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.priceLabel.isHidden = true
+                }, completion: nil)
+            }
+        }
+        else if textField.tag == 3 {
+            guard let adress = setLocationTextField.text else {
+                return
+            }
+            
+            if adress.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.locationLabel.isHidden = true
+                }, completion: nil)
+            }
+            
+            setLocationTextField.resignFirstResponder()
+            
+            let searchRequest = MKLocalSearchRequest()
+            searchRequest.naturalLanguageQuery = adress
+            
+            let activeSearch = MKLocalSearch(request: searchRequest)
+            
+            activeSearch.start { (response, error) in
+                if response == nil, let error = error {
+                    print(error)
+                    print("error, adress not found")
+                }
+                else {
+                    let annotations = self.locationMap.annotations
+                    self.locationMap.removeAnnotations(annotations)
                     
-                    let location = CLLocationCoordinate2DMake(latitude, longitude)
-                    let span = MKCoordinateSpanMake(0.01, 0.01)
-                    let region = MKCoordinateRegionMake(location, span)
-                    self.locationMap.setRegion(region, animated: true)
+                    let longitude = response?.boundingRegion.center.longitude
+                    let latitude = response?.boundingRegion.center.latitude
+                    
+                    if let longitude = longitude ,let latitude = latitude {
+                        let annotation = MKPointAnnotation()
+                        annotation.title = adress
+                        annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+                        self.locationMap.addAnnotation(annotation)
+                        
+                        let location = CLLocationCoordinate2DMake(latitude, longitude)
+                        let span = MKCoordinateSpanMake(0.01, 0.01)
+                        let region = MKCoordinateRegionMake(location, span)
+                        self.locationMap.setRegion(region, animated: true)
+                    }
                 }
             }
         }
@@ -108,10 +167,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBAction func submit(_ sender: Any) {
         let latitude = locationMap.annotations[0].coordinate.latitude
         let longitude = locationMap.annotations[0].coordinate.longitude
-
+        let categoryIndex = categoryPicker.selectedRow(inComponent: 0)
+        let category = categorieList[categoryIndex]
+        
         guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString) else { return }
         
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: Category.clothing)
+        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
         
         addToStorage(listing: listing, data: imageData)
         
@@ -145,5 +206,19 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
                 })
             }
         })
+    }
+    
+    //PickerView
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categorieList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categorieList[row].rawValue
     }
 }
