@@ -18,11 +18,14 @@
                 <outlet property="imageUploadedLabel" destination="kkm-n3-Qne" id="Kt1-6b-MyP"/>
                 <outlet property="locationLabel" destination="lMj-TE-3Oj" id="DEd-w6-xVp"/>
                 <outlet property="locationMap" destination="zHw-Db-UlW" id="zJA-Hm-uDN"/>
+                <outlet property="locationRequiredLabel" destination="htM-b6-ymt" id="R8g-a3-dhj"/>
                 <outlet property="priceLabel" destination="Je6-9F-PX4" id="iwJ-bM-UYt"/>
+                <outlet property="priceRequiredLabel" destination="pqZ-ck-554" id="uy0-CO-cEu"/>
                 <outlet property="priceTextField" destination="fme-C9-rwu" id="HgA-DI-Taj"/>
                 <outlet property="setLocationTextField" destination="eVS-cP-j0q" id="ttJ-en-Umg"/>
                 <outlet property="submitButton" destination="EWT-Pb-6NV" id="bDA-y3-Qxo"/>
                 <outlet property="titleLabel" destination="OBc-2y-ZTd" id="eL1-k2-i12"/>
+                <outlet property="titleRequiredLabel" destination="W8P-r9-jBx" id="aT6-RT-41e"/>
                 <outlet property="titleTextField" destination="EcN-yF-4EA" id="M5T-lo-r7V"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -46,7 +49,7 @@
                                 </label>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBc-2y-ZTd">
                                     <rect key="frame" x="0.0" y="45" width="343" height="0.0"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -59,9 +62,15 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Title required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-r9-jBx">
+                                    <rect key="frame" x="0.0" y="93" width="343" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" name="babyRed"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je6-9F-PX4">
                                     <rect key="frame" x="0.0" y="93" width="343" height="0.0"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -74,6 +83,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 </textField>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Price required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqZ-ck-554">
+                                    <rect key="frame" x="0.0" y="141" width="343" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" name="babyRed"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6A-SH-Cdb">
                                     <rect key="frame" x="0.0" y="145" width="343" height="17"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
@@ -103,15 +118,15 @@
                                         <action selector="addImages:" destination="-1" eventType="touchUpInside" id="gs7-Pw-qcl"/>
                                     </connections>
                                 </button>
-                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hidden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkm-n3-Qne">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hidden" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkm-n3-Qne">
                                     <rect key="frame" x="0.0" y="382" width="343" height="0.0"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" name="seaBlue"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMj-TE-3Oj">
                                     <rect key="frame" x="0.0" y="382" width="343" height="0.0"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -124,6 +139,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Location required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htM-b6-ymt">
+                                    <rect key="frame" x="0.0" y="430" width="343" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" name="babyRed"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zHw-Db-UlW">
                                     <rect key="frame" x="0.0" y="434" width="343" height="150"/>
                                     <constraints>
@@ -174,8 +195,14 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="babyRed">
+            <color red="0.95686274509803926" green="0.35686274509803922" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="lightGreen">
             <color red="0.89411764705882357" green="0.99215686274509807" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="seaBlue">
+            <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="seaBlue">
             <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

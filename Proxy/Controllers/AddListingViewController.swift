@@ -26,6 +26,10 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet weak var locationRequiredLabel: UILabel!
+    @IBOutlet weak var priceRequiredLabel: UILabel!
+    @IBOutlet weak var titleRequiredLabel: UILabel!
+    
     var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
     
     var imageData : Data?
@@ -85,6 +89,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             if textField.text?.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.titleLabel.isHidden = true
+                    self.titleRequiredLabel.isHidden = false
+                }, completion: nil)
+            }
+            else if self.titleRequiredLabel.isHidden == false {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.titleRequiredLabel.isHidden = true
                 }, completion: nil)
             }
         }
@@ -92,6 +102,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             if textField.text?.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.priceLabel.isHidden = true
+                    self.priceRequiredLabel.isHidden = false
+                }, completion: nil)
+            }
+            else if self.priceRequiredLabel.isHidden == false {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.priceRequiredLabel.isHidden = true
                 }, completion: nil)
             }
         }
@@ -103,6 +119,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             if adress.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.locationLabel.isHidden = true
+                    self.locationRequiredLabel.isHidden = false
+                }, completion: nil)
+            }
+            else if self.locationRequiredLabel.isHidden == false {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.locationRequiredLabel.isHidden = true
                 }, completion: nil)
             }
             
