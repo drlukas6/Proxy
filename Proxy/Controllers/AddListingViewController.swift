@@ -11,6 +11,10 @@ import MapKit
 import FirebaseAuth
 import FirebaseStorage
 
+protocol AddListingDelegate {
+    func updateTable(listing : Listing)
+}
+
 class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -35,15 +39,13 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
     
     var imageData : Data?
+    var delegat : AddListingDelegate?
+    var listing : Listing?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
     }
     
     func setupView() {
@@ -229,11 +231,15 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         let categoryIndex = categoryPicker.selectedRow(inComponent: 0)
         let category = categorieList[categoryIndex]
         
-        let listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
+        listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
         
-        addToStorage(listing: listing, data: imageData)
+        addToStorage(listing: listing!, data: imageData)
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        delegat?.updateTable(listing: listing!)
     }
     
     func addToStorage(listing: Listing, data: Data?) {
