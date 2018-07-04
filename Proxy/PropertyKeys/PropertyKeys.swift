@@ -18,6 +18,7 @@ struct NibNames {
     static let search = "SearchView"
     static let searchTableCell = "SearchTableViewCell"
     static let searchResultTableViewCell = "SearchResultTableViewCell"
+    static let profileTableViewCell = "ProfileTableViewCell"
 }
 
 struct ListingKeys {
