@@ -17,9 +17,11 @@ struct NibNames {
     static let register = "RegisterView"
     static let search = "SearchView"
     static let searchTableCell = "SearchTableViewCell"
+    static let searchResultTableViewCell = "SearchResultTableViewCell"
 }
 
 struct ListingKeys {
+    static let id = "id"
     static let title = "title"
     static let ownerId = "ownerId"
     static let ownerDisplayName = "ownerDisplayName"

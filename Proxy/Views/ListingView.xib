@@ -75,7 +75,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBY-jb-7uS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nike" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-rO-Ytd">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-rO-Ytd">
                                             <rect key="frame" x="9.5" y="0.0" width="356" height="200"/>
                                         </imageView>
                                     </subviews>
@@ -171,7 +171,7 @@
         </view>
     </objects>
     <resources>
-        <image name="nike" width="1024" height="513"/>
+        <image name="Placeholder" width="1500" height="1500"/>
         <namedColor name="darkRed">
             <color red="0.41960784313725491" green="0.15294117647058825" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

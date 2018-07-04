@@ -26,6 +26,8 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet weak var descriptionRequiredLabel: UILabel!
+    @IBOutlet weak var imageRequiredLabel: UILabel!
     @IBOutlet weak var locationRequiredLabel: UILabel!
     @IBOutlet weak var priceRequiredLabel: UILabel!
     @IBOutlet weak var titleRequiredLabel: UILabel!
@@ -65,50 +67,48 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
                 self.titleLabel.isHidden = false
                 self.titleLabel.textColor = UIColor.gray
             }, completion: nil)
-            print("title is being edited")
         }
         else if textField.tag == 2 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.priceLabel.isHidden = false
                 self.priceLabel.textColor = UIColor.gray
             }, completion: nil)
-            print("price is being edited")
         }
         else if textField.tag == 3 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.locationLabel.isHidden = false
                 self.locationLabel.textColor = UIColor.gray
             }, completion: nil)
-            print("location is being edited")
         }
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         if textField.tag == 1 {
             if textField.text?.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.titleLabel.isHidden = true
-                    self.titleRequiredLabel.isHidden = false
                 }, completion: nil)
             }
-            else if self.titleRequiredLabel.isHidden == false {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.titleRequiredLabel.isHidden = true
-                }, completion: nil)
+            else {
+                if titleRequiredLabel.isHidden == false {
+                    UIView.animate(withDuration: 0.5) {
+                        self.titleRequiredLabel.isHidden = true
+                    }
+                }
             }
         }
         else if textField.tag == 2 {
             if textField.text?.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.priceLabel.isHidden = true
-                    self.priceRequiredLabel.isHidden = false
                 }, completion: nil)
             }
-            else if self.priceRequiredLabel.isHidden == false {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.priceRequiredLabel.isHidden = true
-                }, completion: nil)
+            else {
+                if priceRequiredLabel.isHidden == false {
+                    UIView.animate(withDuration: 0.5) {
+                        self.priceRequiredLabel.isHidden = true
+                    }
+                }
             }
         }
         else if textField.tag == 3 {
@@ -119,13 +119,14 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             if adress.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.locationLabel.isHidden = true
-                    self.locationRequiredLabel.isHidden = false
                 }, completion: nil)
             }
-            else if self.locationRequiredLabel.isHidden == false {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.locationRequiredLabel.isHidden = true
-                }, completion: nil)
+            else {
+                if locationRequiredLabel.isHidden == false {
+                    UIView.animate(withDuration: 0.5) {
+                        self.locationRequiredLabel.isHidden = true
+                    }
+                }
             }
             
             setLocationTextField.resignFirstResponder()
@@ -177,6 +178,11 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info [UIImagePickerControllerOriginalImage] as? UIImage {
             imageData = UIImagePNGRepresentation(image)
+            if imageData != nil, imageRequiredLabel.isHidden == false {
+                UIView.animate(withDuration: 0.5) {
+                    self.imageRequiredLabel.isHidden = true
+                }
+            }
             self.imageUploadedLabel.text = "Image has been uploaded."
             self.imageUploadedLabel.isHidden = false
         }
@@ -187,14 +193,43 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func submit(_ sender: Any) {
+        
+        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), locationMap.annotations.count != 0, let data = imageData else {
+            showToast(message: "Fill in required informations!")
+            if titleTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5) {
+                    self.titleRequiredLabel.isHidden = false
+                }
+            }
+            if descriptionTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5) {
+                    self.descriptionRequiredLabel.isHidden = false
+                }
+            }
+            if priceTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5) {
+                    self.priceRequiredLabel.isHidden = false
+                }
+            }
+            if setLocationTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+                UIView.animate(withDuration: 0.5) {
+                    self.locationRequiredLabel.isHidden = false
+                }
+            }
+            if imageData == nil {
+                UIView.animate(withDuration: 0.5) {
+                    self.imageRequiredLabel.isHidden = false
+                }
+            }
+            return
+        }
+        
         let latitude = locationMap.annotations[0].coordinate.latitude
         let longitude = locationMap.annotations[0].coordinate.longitude
         let categoryIndex = categoryPicker.selectedRow(inComponent: 0)
         let category = categorieList[categoryIndex]
         
-        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString) else { return }
-        
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
+        let listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
         
         addToStorage(listing: listing, data: imageData)
         
@@ -242,5 +277,27 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categorieList[row].rawValue
+    }
+}
+
+extension UIViewController {
+    
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 150, y: self.view.frame.size.height-100, width: 300, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 10.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 }
