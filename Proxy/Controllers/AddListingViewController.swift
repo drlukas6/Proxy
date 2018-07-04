@@ -229,7 +229,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         let categoryIndex = categoryPicker.selectedRow(inComponent: 0)
         let category = categorieList[categoryIndex]
         
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
+        let listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
         
         addToStorage(listing: listing, data: imageData)
         

@@ -39,5 +39,9 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125.0
+    }
+    
     
 }

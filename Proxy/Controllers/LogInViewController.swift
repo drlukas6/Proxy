@@ -67,7 +67,7 @@ class LogInViewController: UIViewController {
 //        let cVC = ChatViewController()
 //        self.present(cVC, animated: true, completion: nil)
         
-        DatabaseHelper.init().getListingsByName(name: "X") { (result) in
+        DatabaseHelper.init().getListingsByName(name: "tit") { (result) in
             var listings: [Listing] = []
             for json in result {
                 listings.append(Listing(json: json))

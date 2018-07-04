@@ -28,6 +28,13 @@ class SearchResultTableViewCell: UITableViewCell {
     
     func setup(listing: Listing) {
         listingTitle.text = listing.title
-        print(Storage.storage().reference(withPath: "/images/\(listing.id).png").fullPath)
+        Storage.storage().reference(withPath: "/images/\(listing.id).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
+            if let err = error {
+                print(err)
+            }
+            else {
+                self.listingImage.image = UIImage(data: data!)
+            }
+        }
     }
 }
