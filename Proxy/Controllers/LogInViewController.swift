@@ -49,10 +49,7 @@ class LogInViewController: UIViewController {
             }
             if let user = response?.user {
                 print("User \(user) logged in!")
-                let searchViewController = SearchViewController()
-                let addL = AddListingViewController()
-                let l = ListingViewController()
-                self.navigationController?.pushViewController(searchViewController, animated: true)
+                self.setupTabBar()
             }
         }
     }
@@ -78,8 +75,16 @@ class LogInViewController: UIViewController {
         }
     }
     
-    
-
-    
+    func setupTabBar() {
+        let searchViewController = SearchViewController()
+        searchViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(named: "database"), tag: 1)
+        let profileViewController = ProfileViewController()
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
+        let addListingViewController = AddListingViewController()
+        addListingViewController.tabBarItem = UITabBarItem(title: "Post", image: UIImage(named: "plus"), tag: 3)
+        let tabBarViewController = UITabBarController()
+        tabBarViewController.setViewControllers([searchViewController, addListingViewController, profileViewController], animated: true)
+        self.navigationController?.pushViewController(tabBarViewController, animated: true)
+    }
 
 }
