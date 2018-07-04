@@ -194,7 +194,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         
         guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString) else { return }
         
-        let listing = Listing(title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
+        let listing = Listing(id: UUID().uuidString ,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
         
         addToStorage(listing: listing, data: imageData)
         

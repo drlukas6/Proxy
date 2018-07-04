@@ -63,9 +63,19 @@ class LogInViewController: UIViewController {
     }
     
     @objc func testChat() {
-        DatabaseHelper.init().createBasicListing()
-        let cVC = ChatViewController()
-        self.present(cVC, animated: true, completion: nil)
+//        DatabaseHelper.init().createBasicListing()
+//        let cVC = ChatViewController()
+//        self.present(cVC, animated: true, completion: nil)
+        
+        DatabaseHelper.init().getListingsByName(name: "X") { (result) in
+            var listings: [Listing] = []
+            for json in result {
+                listings.append(Listing(json: json))
+            }
+            let searchVC = SearchResultsViewController()
+            searchVC.searchResults = listings
+            self.present(searchVC, animated: true, completion: nil)
+        }
     }
     
     
