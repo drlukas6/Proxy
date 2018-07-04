@@ -59,6 +59,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableSearch.delegate = self
         tableSearch.estimatedRowHeight = 100
         tableSearch.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
+        searchButton.addTarget(self, action: #selector(searchForListing), for: .touchUpInside)
     }
 }
 
