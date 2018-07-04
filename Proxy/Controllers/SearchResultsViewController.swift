@@ -19,10 +19,13 @@ class SearchResultsViewController: UIViewController {
     }
     
     func initialSetup() {
+        navigationController?.isNavigationBarHidden = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: NibNames.searchResultTableViewCell, bundle: nil), forCellReuseIdentifier: "SearchResultCellId")
     }
+    
+    
 
 }
 
@@ -47,7 +50,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         let listingVC = ListingViewController()
         listingVC.listing = searchResults[indexPath.row]
         
-        present(listingVC, animated: true, completion: nil)
+        navigationController?.pushViewController(listingVC, animated: true)
     }
     
     
