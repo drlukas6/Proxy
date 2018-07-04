@@ -43,6 +43,12 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
         cell.setUpCollectionViewCell()
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        let cellSize = CGSize(width: 200, height: 200)
+        return cellSize
+    }
+
     
     
     
