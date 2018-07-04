@@ -43,5 +43,12 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         return 125.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let listingVC = ListingViewController()
+        listingVC.listing = searchResults[indexPath.row]
+        
+        present(listingVC, animated: true, completion: nil)
+    }
+    
     
 }

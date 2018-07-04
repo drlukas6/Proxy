@@ -14,6 +14,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     @IBOutlet weak var listingImage: UIImageView!
     @IBOutlet weak var listingTitle: UILabel!
+    @IBOutlet weak var listingPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,8 @@ class SearchResultTableViewCell: UITableViewCell {
     
     func setup(listing: Listing) {
         listingTitle.text = listing.title
+        let formattedPrice = String(format: "%.2f", listing.price)
+        listingPrice.text = "HRK\(formattedPrice)"
         Storage.storage().reference(withPath: "/images/\(listing.id).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
             if let err = error {
                 print(err)
