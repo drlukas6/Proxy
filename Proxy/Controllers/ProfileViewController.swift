@@ -109,9 +109,3 @@ extension ProfileViewController : UITableViewDelegate {
     }
 }
 
-extension ProfileViewController: AddListingDelegate {
-    func updateTable(listing: Listing) {
-        profileListings.append(listing)
-        tableView.reloadData()
-    }
-}

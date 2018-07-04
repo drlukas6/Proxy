@@ -41,8 +41,8 @@
                                     <color key="textColor" name="seaBlue"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRK499" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-VL-6VT">
-                                    <rect key="frame" x="234" y="16" width="125" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRK499" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-VL-6VT">
+                                    <rect key="frame" x="234" y="16" width="125" height="68"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="125" id="1GP-R9-NiC"/>
                                     </constraints>
@@ -65,6 +65,7 @@
                                 <constraint firstItem="86a-vT-NIM" firstAttribute="top" secondItem="yFE-8A-NvJ" secondAttribute="bottom" constant="4" id="ILk-JO-W4e"/>
                                 <constraint firstItem="jhK-VL-6VT" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="L13-1F-qPK"/>
                                 <constraint firstItem="yFE-8A-NvJ" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="i7B-S6-WLO"/>
+                                <constraint firstAttribute="bottom" secondItem="jhK-VL-6VT" secondAttribute="bottom" constant="16" id="oIQ-lH-NRo"/>
                                 <constraint firstAttribute="height" constant="100" id="xxz-vK-Uto"/>
                                 <constraint firstAttribute="trailing" secondItem="jhK-VL-6VT" secondAttribute="trailing" constant="16" id="yct-PI-AQ1"/>
                             </constraints>
