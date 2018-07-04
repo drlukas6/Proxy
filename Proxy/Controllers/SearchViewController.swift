@@ -44,7 +44,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.searchTextField.text == ""
             for json in response {
                 listings.append(Listing(json: json))
-            }
+    }
             let searchResultsVC = SearchResultsViewController()
             searchResultsVC.searchResults = listings
             self.navigationController?.pushViewController(searchResultsVC, animated: true)
