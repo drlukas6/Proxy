@@ -12,14 +12,20 @@ class CollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageCollectionView: UIImageView!
     @IBOutlet weak var titleCollectionView: UILabel!
+    // @IBOutlet weak var imageCollectionView: UIImageView!
+   // @IBOutlet weak var titleCollectionView: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+   
+    
     func setUpCollectionViewCell() {
-        titleCollectionView.text = "Test"
+        titleCollectionView.text = "test"
         imageCollectionView.image = UIImage(named: "losauto")
+
     }
 }
