@@ -23,6 +23,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categorieList.count
     }
