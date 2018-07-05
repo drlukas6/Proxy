@@ -33,4 +33,11 @@ struct ListingKeys {
     static let category = "category"
 }
 
+struct ChatKeys {
+    static let id = "id"
+    static let listingOwnerDisplayName = "listingOwnerDisplayName"
+    static let ownDisplayName = "ownDisplayName"
+    static let listingItem = "listingItem"
+}
+
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,7 +72,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-94-h3c">
-                            <rect key="frame" x="0.0" y="124" width="375" height="583.5"/>
+                            <rect key="frame" x="0.0" y="124" width="375" height="639.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBY-jb-7uS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -143,6 +144,12 @@
                                         <constraint firstAttribute="bottom" secondItem="Wvm-nb-j8G" secondAttribute="bottom" id="Y5H-dT-fWE"/>
                                         <constraint firstItem="Wvm-nb-j8G" firstAttribute="centerX" secondItem="yx8-ov-0LV" secondAttribute="centerX" id="kCD-7p-zrp"/>
                                         <constraint firstItem="Wvm-nb-j8G" firstAttribute="top" secondItem="yx8-ov-0LV" secondAttribute="top" id="rc1-Cj-FmX"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suF-0M-QZy">
+                                    <rect key="frame" x="0.0" y="589.5" width="375" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Gab-cT-g4N"/>
                                     </constraints>
                                 </view>
                             </subviews>

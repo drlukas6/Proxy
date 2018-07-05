@@ -32,17 +32,21 @@ class ListingViewController: UIViewController {
     func initialSetup() {
         listingImage.layer.cornerRadius = 20.0
         listingImage.layer.masksToBounds = true
+        setImage()
         listingLocation.layer.cornerRadius = 20.0
+        setLocation()
         listingDescription.layer.cornerRadius = 20.0
-        contactButton.layer.cornerRadius = contactButton.bounds.height / 2
-        
+        listingDescription.text = listing.description
+        if listing.ownerId == Auth.auth().currentUser!.uid {
+            contactButton.isHidden = true
+        }
+        else {
+            contactButton.layer.cornerRadius = contactButton.bounds.height / 2
+            contactButton.addTarget(self, action: #selector(startChat), for: .touchUpInside)
+        }
         listingTitle.text = listing.title
         listingOwner.text = "From " + listing.ownerDisplayName
         listingPrice.text = "HRK" + String(format: "%.2f", listing.price)
-        listingDescription.text = listing.description
-        
-        setImage()
-        setLocation()
     }
     
     func setImage() {
@@ -73,12 +77,14 @@ class ListingViewController: UIViewController {
     
     @objc func startChat() {
         let channel = ChatChannel(listing: listing)
+        DatabaseHelper.init().createChatChannel(channel: channel)
         let channelDbReference = DatabaseHelper.init().getChatReference(for: channel)
         let chatVC = ChatViewController()
         chatVC.senderId = Auth.auth().currentUser!.uid
         chatVC.senderDisplayName = Auth.auth().currentUser?.displayName
         chatVC.channel = channel
         chatVC.channelReference = channelDbReference
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 
 

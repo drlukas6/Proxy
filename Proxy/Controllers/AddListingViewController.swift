@@ -175,7 +175,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info [UIImagePickerControllerOriginalImage] as? UIImage {
-            imageData = UIImagePNGRepresentation(image.resizeWithPercent(percentage: 0.1)!)
+            if image.size.height > 1000 && image.size.height > 1000 {
+                imageData = UIImagePNGRepresentation(image.resizeWithPercent(percentage: 0.1)!)
+            }
+            else {
+                imageData = UIImagePNGRepresentation(image)
+            }
             if imageData != nil, imageRequiredLabel.isHidden == false {
                 UIView.animate(withDuration: 0.5) {
                     self.imageRequiredLabel.isHidden = true
@@ -232,7 +237,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         addToStorage(listing: listing!, data: imageData)
         
         resetView()
-        tabBarController?.selectedIndex = 2
+        tabBarController?.selectedIndex = 0
     }
     
 

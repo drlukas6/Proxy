@@ -25,16 +25,11 @@ class ChatViewController: JSQMessagesViewController {
     
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
-    var listing: Listing!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        addMessage(withId: senderId, name: senderDisplayName, text: "Hey! I am interested in \(listing.title)!")
     }
     
     func initialSetup() {
@@ -83,6 +78,10 @@ class ChatViewController: JSQMessagesViewController {
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
         
         finishSendingMessage() // 5
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        return messages[indexPath.item].senderId == self.senderId ? outgoingBubbleImageView : incomingBubbleImageView
     }
     
     func setupOutgoingMessage() -> JSQMessagesBubbleImage {

@@ -60,11 +60,6 @@ class LogInViewController: UIViewController {
     }
     
     @objc func testChat() {
-//        DatabaseHelper.init().createBasicListing()
-//        let cVC = ChatViewController()
-//        self.present(cVC, animated: true, completion: nil)
-        
-        
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: Category.clothing.rawValue) { (response) in
             print(response)
         }
@@ -77,8 +72,10 @@ class LogInViewController: UIViewController {
         profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
         let addListingViewController = AddListingViewController()
         addListingViewController.tabBarItem = UITabBarItem(title: "Post", image: UIImage(named: "plus"), tag: 3)
+        let chatsViewController = ChatsViewController()
+        chatsViewController.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "chat"), tag: 4)
         let tabBarViewController = UITabBarController()
-        tabBarViewController.setViewControllers([searchViewController, addListingViewController, profileViewController], animated: true)
+        tabBarViewController.setViewControllers([searchViewController, addListingViewController, chatsViewController, profileViewController], animated: true)
         self.navigationController?.pushViewController(tabBarViewController, animated: true)
     }
 

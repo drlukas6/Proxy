@@ -11,14 +11,8 @@ import FirebaseDatabase
 import FirebaseAuth
 
 struct DatabaseHelper {
-    
-    enum Condition {
-        case category(category: Category)
-        case title(title: String)
-        case ownerId
-    }
-    
     let BaseReference = Database.database().reference()
+    
     var ChatsReference: DatabaseReference {
         return BaseReference.child("Chat")
     }
@@ -47,7 +41,6 @@ struct DatabaseHelper {
         return (listing[ListingKeys.ownerId] as! String) == ownerId
     }
     
-    
     func getListingsBy(condition: @escaping (_ condition: String,_ listing: [String : Any]) -> Bool, comparison: String, completionHandler: @escaping ([[String : Any]]) -> () ) {
         ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
             let enumerator = snapshot.children
@@ -59,35 +52,18 @@ struct DatabaseHelper {
         }
     }
     
+    func createChatChannel(channel: ChatChannel) {
+        ChatsReference.child(channel.id).setValue(channel.databaseFormat())
+    }
     
-    
-    
-    func getListingsBy(condition: Condition, completionHandler: @escaping ([[String : Any]]) -> () ) {
-        var toReturn = [[String : Any]]()
-        ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
+    func getYourChatChannels(completionHandler: @escaping ([[String : Any]]) -> () ) {
+        ChatsReference.observeSingleEvent(of: .value) { (snapshot) in
             let enumerator = snapshot.children
-            let childrenArray = (enumerator.allObjects as! [DataSnapshot])
-            for snap in childrenArray {
-                print("\n \(snap.value as! [String : Any]) \n")
-            }
-            
-            while let listingPreParsed = enumerator.nextObject() as? DataSnapshot, let parsedListing = listingPreParsed.value as? [String : Any] {
-                switch condition {
-                case .category(let category):
-                    if (parsedListing[ListingKeys.category] as! String) == category.rawValue {
-                        toReturn.append(parsedListing)
-                    }
-                case .title(let title):
-                    if (parsedListing[ListingKeys.title] as! String).contains(title) {
-                        toReturn.append(parsedListing)
-                    }
-                case .ownerId:
-                    if (parsedListing[ListingKeys.ownerId] as! String) == Auth.auth().currentUser!.uid {
-                        toReturn.append(parsedListing)
-                    }
-                }
-            }
-            completionHandler(toReturn)
+            let childrenSnapshot = (enumerator.allObjects as! [DataSnapshot])
+            let allParsedChatChannels = childrenSnapshot.compactMap { $0.value as? [String : Any] }
+            completionHandler(allParsedChatChannels.filter({ (parsedListing) -> Bool in
+                (parsedListing[ChatKeys.id] as! String).contains(Auth.auth().currentUser!.uid)
+            }))
         }
     }
 }
