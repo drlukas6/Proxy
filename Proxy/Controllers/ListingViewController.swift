@@ -30,6 +30,7 @@ class ListingViewController: UIViewController {
     }
     
     func initialSetup() {
+        navigationController?.isNavigationBarHidden = false
         listingImage.layer.cornerRadius = 20.0
         listingImage.layer.masksToBounds = true
         setImage()
@@ -77,14 +78,18 @@ class ListingViewController: UIViewController {
     
     @objc func startChat() {
         let channel = ChatChannel(listing: listing)
-        DatabaseHelper.init().createChatChannel(channel: channel)
         let channelDbReference = DatabaseHelper.init().getChatReference(for: channel)
-        let chatVC = ChatViewController()
-        chatVC.senderId = Auth.auth().currentUser!.uid
-        chatVC.senderDisplayName = Auth.auth().currentUser?.displayName
-        chatVC.channel = channel
-        chatVC.channelReference = channelDbReference
-        navigationController?.pushViewController(chatVC, animated: true)
+        channelDbReference.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.childrenCount < 1 {
+                DatabaseHelper.init().createChatChannel(channel: channel)
+            }
+            let chatVC = ChatViewController()
+            chatVC.senderId = Auth.auth().currentUser!.uid
+            chatVC.senderDisplayName = Auth.auth().currentUser?.displayName
+            chatVC.channel = channel
+            chatVC.channelReference = channelDbReference
+            self.navigationController?.pushViewController(chatVC, animated: true)
+        }
     }
 
 

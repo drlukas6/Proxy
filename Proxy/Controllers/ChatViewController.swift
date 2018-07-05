@@ -33,6 +33,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func initialSetup() {
+        navigationController?.isNavigationBarHidden = false
         outgoingBubbleImageView = setupOutgoingMessage()
         incomingBubbleImageView = setupIncomingBubble()
         messageRef = channelReference.child("messages")

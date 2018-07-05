@@ -23,6 +23,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categorieList.count
     }
@@ -55,6 +59,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func initialSetup() {
+        self.hideKeyboardWhenTappedAround()
         tableSearch.dataSource = self
         tableSearch.delegate = self
         tableSearch.estimatedRowHeight = 100
