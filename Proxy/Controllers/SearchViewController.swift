@@ -60,10 +60,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func initialSetup() {
         self.hideKeyboardWhenTappedAround()
+        
+        searchTextField.layer.cornerRadius = 5.0
+        
         tableSearch.dataSource = self
         tableSearch.delegate = self
         tableSearch.estimatedRowHeight = 100
         tableSearch.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
+        tableSearch.layer.cornerRadius = 15.0
         searchButton.addTarget(self, action: #selector(searchForListing), for: .touchUpInside)
     }
 }

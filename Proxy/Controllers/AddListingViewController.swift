@@ -55,7 +55,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         addImagesButton.layer.cornerRadius = 20.0
         submitButton.layer.cornerRadius = 20.0
         locationMap.layer.cornerRadius = 20.0
-        descriptionTextField.layer.cornerRadius = 5.0
+        descriptionTextField.layer.cornerRadius = 20.0
         self.hideKeyboardWhenTappedAround()
     }
     
