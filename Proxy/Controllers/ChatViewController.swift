@@ -58,11 +58,8 @@ class ChatViewController: JSQMessagesViewController {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
         
-        if message.senderId == senderId {
-            cell.textView?.textColor = UIColor.white
-        } else {
-            cell.textView?.textColor = UIColor.black
-        }
+        cell.textView?.textColor = UIColor.white
+        
         return cell
     }
     
@@ -87,11 +84,11 @@ class ChatViewController: JSQMessagesViewController {
     
     func setupOutgoingMessage() -> JSQMessagesBubbleImage {
         let bubbleImage = JSQMessagesBubbleImageFactory()
-        return bubbleImage!.outgoingMessagesBubbleImage(with: UIColor(named: "seaBlue"))
+        return bubbleImage!.outgoingMessagesBubbleImage(with: UIColor(named: "trafficLightGreen"))
     }
     func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor(named: "skyBlue"))
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor(named: "trafficLightYellow"))
     }
     
     func addMessage(withId id: String, name: String, text: String) {

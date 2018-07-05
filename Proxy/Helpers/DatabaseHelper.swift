@@ -30,7 +30,7 @@ struct DatabaseHelper {
     }
     
     static func byTitle(title: String, in listing: [String : Any]) -> Bool {
-        return (listing[ListingKeys.title] as! String).contains(title)
+        return (listing[ListingKeys.title] as! String).lowercased().contains(title.lowercased())
     }
     
     static func byCategory(category: String, in listing: [String : Any]) -> Bool {

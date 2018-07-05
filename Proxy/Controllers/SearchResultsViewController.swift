@@ -20,6 +20,7 @@ class SearchResultsViewController: UIViewController {
     
     func initialSetup() {
         navigationController?.isNavigationBarHidden = false
+        tableView.layer.cornerRadius = 15.0
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: NibNames.searchResultTableViewCell, bundle: nil), forCellReuseIdentifier: "SearchResultCellId")

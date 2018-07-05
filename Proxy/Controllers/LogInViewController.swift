@@ -70,6 +70,8 @@ class LogInViewController: UIViewController {
         tabBarViewController.setViewControllers([searchViewController, addListingViewController, chatsViewController, profileViewController], animated: true)
         tabBarViewController.tabBar.tintColor = UIColor(named: "babyRed")
         tabBarViewController.tabBar.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = UIColor(named: "trafficLightGreen")
+        navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.pushViewController(tabBarViewController, animated: true)
     }
 
