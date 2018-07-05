@@ -63,7 +63,7 @@ class LogInViewController: UIViewController {
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
         let addListingViewController = AddListingViewController()
-        addListingViewController.tabBarItem = UITabBarItem(title: "Post", image: UIImage(named: "plus"), tag: 3)
+        addListingViewController.tabBarItem = UITabBarItem(title: "Sell", image: UIImage(named: "coins"), tag: 3)
         let chatsViewController = ChatsViewController()
         chatsViewController.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "speech_buble"), tag: 4)
         let tabBarViewController = UITabBarController()
