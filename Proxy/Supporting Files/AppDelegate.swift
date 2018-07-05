@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let initialViewController = LogInViewController(nibName: NibNames.logIn, bundle: nil)
         let mainNavigationController = UINavigationController(rootViewController: initialViewController)
+        mainNavigationController.navigationBar.tintColor = UIColor(named: "trafficLightGreen")
+        mainNavigationController.navigationBar.barStyle = .blackTranslucent
+        mainNavigationController.navigationBar.prefersLargeTitles = true
         window?.rootViewController = mainNavigationController
         window?.makeKeyAndVisible()
         

@@ -27,6 +27,7 @@ class LogInViewController: UIViewController {
     }
 
     func initialSetup() {
+        self.title = "Log in"
         loginButton.layer.cornerRadius = 22.5
         registerButton.addTarget(self, action: #selector(LogInViewController.registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(LogInViewController.loginWithUser), for: .touchUpInside)
@@ -70,8 +71,6 @@ class LogInViewController: UIViewController {
         tabBarViewController.setViewControllers([searchViewController, addListingViewController, chatsViewController, profileViewController], animated: true)
         tabBarViewController.tabBar.tintColor = UIColor(named: "babyRed")
         tabBarViewController.tabBar.backgroundColor = .white
-        navigationController?.navigationBar.tintColor = UIColor(named: "trafficLightGreen")
-        navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.pushViewController(tabBarViewController, animated: true)
     }
 

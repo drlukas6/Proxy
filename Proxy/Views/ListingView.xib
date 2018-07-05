@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +19,6 @@
                 <outlet property="listingLocation" destination="9RH-Ym-Ml1" id="gn1-U2-qvz"/>
                 <outlet property="listingOwner" destination="86a-vT-NIM" id="EOS-QN-PfD"/>
                 <outlet property="listingPrice" destination="jhK-VL-6VT" id="EuV-lF-7wa"/>
-                <outlet property="listingTitle" destination="yFE-8A-NvJ" id="9JP-Rg-8Pt"/>
                 <outlet property="mainScrollView" destination="Mue-Sb-bvN" id="tP3-Z3-d20"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,39 +34,26 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-Rg-Fke">
                             <rect key="frame" x="0.0" y="16" width="375" height="100"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike FreeRun 5.0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="yFE-8A-NvJ">
-                                    <rect key="frame" x="16" y="16" width="210" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                    <color key="textColor" name="seaBlue"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRK499" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-VL-6VT">
-                                    <rect key="frame" x="234" y="16" width="125" height="68"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="125" id="1GP-R9-NiC"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRK499" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-VL-6VT">
+                                    <rect key="frame" x="12" y="16" width="149.5" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                     <color key="textColor" name="babyRed"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Student123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86a-vT-NIM">
-                                    <rect key="frame" x="16" y="50" width="130" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                    <rect key="frame" x="12" y="64" width="137.5" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                     <color key="textColor" name="skyBlue"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="86a-vT-NIM" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="16" id="89Q-W0-30X"/>
-                                <constraint firstItem="jhK-VL-6VT" firstAttribute="leading" secondItem="yFE-8A-NvJ" secondAttribute="trailing" constant="8" id="DZv-l2-kzu"/>
-                                <constraint firstItem="yFE-8A-NvJ" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="16" id="Hkp-S6-0an"/>
-                                <constraint firstItem="86a-vT-NIM" firstAttribute="top" secondItem="yFE-8A-NvJ" secondAttribute="bottom" constant="4" id="ILk-JO-W4e"/>
-                                <constraint firstItem="jhK-VL-6VT" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="L13-1F-qPK"/>
-                                <constraint firstItem="yFE-8A-NvJ" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="i7B-S6-WLO"/>
-                                <constraint firstAttribute="bottom" secondItem="jhK-VL-6VT" secondAttribute="bottom" constant="16" id="oIQ-lH-NRo"/>
+                                <constraint firstItem="86a-vT-NIM" firstAttribute="top" secondItem="jhK-VL-6VT" secondAttribute="bottom" constant="5" id="Es2-KS-jHt"/>
+                                <constraint firstItem="jhK-VL-6VT" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="12" id="Sg3-vJ-0o3"/>
+                                <constraint firstItem="jhK-VL-6VT" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="VMu-jP-7iS"/>
+                                <constraint firstItem="86a-vT-NIM" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="12" id="cW8-IT-MQw"/>
                                 <constraint firstAttribute="height" constant="100" id="xxz-vK-Uto"/>
-                                <constraint firstAttribute="trailing" secondItem="jhK-VL-6VT" secondAttribute="trailing" constant="16" id="yct-PI-AQ1"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-94-h3c">

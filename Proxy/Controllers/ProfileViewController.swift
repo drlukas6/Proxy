@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController {
     
     func setupView() {
         self.hideKeyboardWhenTappedAround()
+        self.title = "Profile"
         navigationController?.isNavigationBarHidden = true
         addNewListingButton.layer.cornerRadius = 17
         tableView.layer.cornerRadius = 17

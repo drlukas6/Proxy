@@ -21,9 +21,11 @@ class ChatsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         refreshChatChannels()
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     func initialSetup() {
+        self.title = "Chats"
         chatsTableView.delegate = self
         chatsTableView.dataSource = self
         chatsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ChannelsId")
@@ -63,6 +65,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let channelDbReference = DatabaseHelper.init().getChatReference(for: chats[indexPath.row])
         let chatVC = ChatViewController()
         chatVC.senderId = Auth.auth().currentUser!.uid
