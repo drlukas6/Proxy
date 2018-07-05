@@ -64,7 +64,8 @@ class LogInViewController: UIViewController {
 //        let cVC = ChatViewController()
 //        self.present(cVC, animated: true, completion: nil)
         
-        DatabaseHelper.init().getListingsBy(condition: .title(title: "ti")) { (response) in
+        
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: Category.clothing.rawValue) { (response) in
             print(response)
         }
     }

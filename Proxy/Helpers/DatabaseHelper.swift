@@ -35,22 +35,42 @@ struct DatabaseHelper {
         return ChatsReference.child(channel.id)
     }
     
-    func by(title: String, in listing: [String : Any]) -> Bool {
+    static func byTitle(title: String, in listing: [String : Any]) -> Bool {
         return (listing[ListingKeys.title] as! String).contains(title)
     }
     
-    func by(category: String, in listing: [String : Any]) -> Bool {
+    static func byCategory(category: String, in listing: [String : Any]) -> Bool {
         return (listing[ListingKeys.category] as! String) == category
     }
     
-    func by(ownerId: String, in listing: [String : Any]) -> Bool {
+    static func byOwner(ownerId: String, in listing: [String : Any]) -> Bool {
         return (listing[ListingKeys.ownerId] as! String) == ownerId
     }
+    
+    
+    func getListingsBy(condition: @escaping (_ condition: String,_ listing: [String : Any]) -> Bool, comparison: String, completionHandler: @escaping ([[String : Any]]) -> () ) {
+        ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
+            let enumerator = snapshot.children
+            let childrenSnapshot = (enumerator.allObjects as! [DataSnapshot])
+            let allParsedListings = childrenSnapshot.compactMap { $0.value as? [String : Any] }
+            completionHandler(allParsedListings.filter({ (parsedListing) -> Bool in
+                return condition(comparison, parsedListing)
+            }))
+        }
+    }
+    
+    
+    
     
     func getListingsBy(condition: Condition, completionHandler: @escaping ([[String : Any]]) -> () ) {
         var toReturn = [[String : Any]]()
         ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
             let enumerator = snapshot.children
+            let childrenArray = (enumerator.allObjects as! [DataSnapshot])
+            for snap in childrenArray {
+                print("\n \(snap.value as! [String : Any]) \n")
+            }
+            
             while let listingPreParsed = enumerator.nextObject() as? DataSnapshot, let parsedListing = listingPreParsed.value as? [String : Any] {
                 switch condition {
                 case .category(let category):

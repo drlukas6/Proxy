@@ -41,7 +41,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchForListing() {
         var listings: [Listing] = []
         
-        DatabaseHelper.init().getListingsBy(condition: .title(title: searchTextField.text ?? "")) { (response) in
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byTitle, comparison: searchTextField.text ?? "") { (response) in
             for json in response {
                 listings.append(Listing(json: json))
             }
@@ -49,7 +49,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             searchResultsVC.searchResults = listings
             self.navigationController?.pushViewController(searchResultsVC, animated: true)
         }
-        self.searchTextField.text == ""
     }
     
     
