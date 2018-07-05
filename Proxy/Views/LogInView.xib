@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController" customModule="Proxy" customModuleProvider="target">
             <connections>
-                <outlet property="chat" destination="E1f-ng-fma" id="waI-Ja-aqe"/>
                 <outlet property="emailTextField" destination="Gel-0j-zYi" id="Z87-Xi-kns"/>
                 <outlet property="loginButton" destination="WCk-Ds-T0x" id="VOq-yP-z30"/>
                 <outlet property="passwordTextField" destination="M3J-ka-6MO" id="JY4-ip-NZm"/>
@@ -37,25 +35,27 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-MAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gel-0j-zYi">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                            <color key="backgroundColor" name="trafficLightGreen"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="FS1-nJ-scg"/>
                             </constraints>
-                            <color key="textColor" name="seaBlue"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" textContentType="email"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3J-ka-6MO">
                             <rect key="frame" x="0.0" y="50" width="343" height="40"/>
+                            <color key="backgroundColor" name="trafficLightGreen"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="JH0-t7-yC7"/>
                             </constraints>
-                            <color key="textColor" name="seaBlue"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCk-Ds-T0x">
                             <rect key="frame" x="0.0" y="100" width="343" height="45"/>
-                            <color key="backgroundColor" name="seaBlue"/>
+                            <color key="backgroundColor" red="0.0" green="0.39479436528497414" blue="0.2339554384084882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="jPv-3g-xhm"/>
                             </constraints>
@@ -71,18 +71,13 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <state key="normal" title="NEW USER?">
-                                <color key="titleColor" name="skyBlue"/>
+                                <color key="titleColor" red="0.0" green="0.39479436530000001" blue="0.23395543839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1f-ng-fma">
-                    <rect key="frame" x="172" y="494" width="31" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="chat"/>
-                </button>
             </subviews>
-            <color key="backgroundColor" name="lightGreen"/>
+            <color key="backgroundColor" name="trafficLightGreen"/>
             <constraints>
                 <constraint firstItem="ovI-Fb-MZo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="0Hk-mH-NJ7"/>
                 <constraint firstItem="g7F-3F-C6e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="C1G-u7-iEn"/>
@@ -96,14 +91,8 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="lightGreen">
-            <color red="0.89411764705882357" green="0.99215686274509807" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="seaBlue">
-            <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="skyBlue">
-            <color red="0.27058823529411763" green="0.41176470588235292" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="trafficLightGreen">
+            <color red="0.0" green="0.68199998140335083" blue="0.39599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

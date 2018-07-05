@@ -23,7 +23,21 @@ struct ChatChannel {
     }
     
     init(listing: Listing) {
-        self.init(id: "\(listing.ownerId)-\(String(describing: Auth.auth().currentUser?.uid))", listingOwner: listing.ownerDisplayName, own: (Auth.auth().currentUser?.displayName)!, listingTitle: listing.title)
+        var sortedIds = [listing.ownerId, Auth.auth().currentUser!.uid].sorted()
+        self.init(id: "\(sortedIds[0])-\(sortedIds[1])", listingOwner: listing.ownerDisplayName, own: (Auth.auth().currentUser?.displayName)!, listingTitle: listing.title)
+    }
+    
+    init(json: [String : Any]) {
+        let id = json[ChatKeys.id] as! String
+        let listingOwnerDisplayName = json[ChatKeys.listingOwnerDisplayName] as! String
+        let ownDisplayName = json[ChatKeys.ownDisplayName] as! String
+        let listingItem = json[ChatKeys.listingItem] as! String
+        
+        self.init(id: id, listingOwner: listingOwnerDisplayName, own: ownDisplayName, listingTitle: listingItem)
+    }
+    
+    func databaseFormat() -> [String : Any] {
+        return [ChatKeys.id : self.id, ChatKeys.listingItem : self.listingItem, ChatKeys.listingOwnerDisplayName : self.listingOwnerDisplayName, ChatKeys.ownDisplayName : self.ownDisplayName]
     }
     
 }

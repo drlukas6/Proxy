@@ -24,7 +24,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,28 +41,37 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     @objc
     func searchForListing() {
         var listings: [Listing] = []
-        DatabaseHelper.init().getListingsByName(name: searchTextField.text ?? "") { (response) in
+        
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byTitle, comparison: searchTextField.text ?? "") { (response) in
             for json in response {
                 listings.append(Listing(json: json))
-    }
+            }
             let searchResultsVC = SearchResultsViewController()
             searchResultsVC.searchResults = listings
             self.navigationController?.pushViewController(searchResultsVC, animated: true)
         }
-        self.searchTextField.text == ""
     }
     
     
     
     
     func initialSetup() {
+        self.hideKeyboardWhenTappedAround()
+        
+        searchTextField.layer.cornerRadius = 5.0
+        
         tableSearch.dataSource = self
         tableSearch.delegate = self
         tableSearch.estimatedRowHeight = 100
         tableSearch.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
+        tableSearch.layer.cornerRadius = 15.0
         searchButton.addTarget(self, action: #selector(searchForListing), for: .touchUpInside)
     }
 }

@@ -15,7 +15,6 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var chat: UIButton!
     
     
     override func viewDidLoad() {
@@ -28,10 +27,10 @@ class LogInViewController: UIViewController {
     }
 
     func initialSetup() {
+        self.title = "Log in"
         loginButton.layer.cornerRadius = 22.5
         registerButton.addTarget(self, action: #selector(LogInViewController.registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(LogInViewController.loginWithUser), for: .touchUpInside)
-        chat.addTarget(self, action: #selector(LogInViewController.testChat), for: .touchUpInside)
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -49,10 +48,7 @@ class LogInViewController: UIViewController {
             }
             if let user = response?.user {
                 print("User \(user) logged in!")
-                let searchViewController = SearchViewController()
-                let addL = AddListingViewController()
-                let l = ListingViewController()
-                self.navigationController?.pushViewController(searchViewController, animated: true)
+                self.setupTabBar()
             }
         }
     }
@@ -62,24 +58,20 @@ class LogInViewController: UIViewController {
         self.navigationController?.pushViewController(registerViewController, animated: true)
     }
     
-    @objc func testChat() {
-//        DatabaseHelper.init().createBasicListing()
-//        let cVC = ChatViewController()
-//        self.present(cVC, animated: true, completion: nil)
-        
-        DatabaseHelper.init().getListingsByName(name: "tit") { (result) in
-            var listings: [Listing] = []
-            for json in result {
-                listings.append(Listing(json: json))
-            }
-            let searchVC = SearchResultsViewController()
-            searchVC.searchResults = listings
-            self.present(searchVC, animated: true, completion: nil)
-        }
+    func setupTabBar() {
+        let searchViewController = SearchViewController()
+        searchViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(named: "shop"), tag: 1)
+        let profileViewController = ProfileViewController()
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
+        let addListingViewController = AddListingViewController()
+        addListingViewController.tabBarItem = UITabBarItem(title: "Sell", image: UIImage(named: "coins"), tag: 3)
+        let chatsViewController = ChatsViewController()
+        chatsViewController.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "speech_buble"), tag: 4)
+        let tabBarViewController = UITabBarController()
+        tabBarViewController.setViewControllers([searchViewController, addListingViewController, chatsViewController, profileViewController], animated: true)
+        tabBarViewController.tabBar.tintColor = UIColor(named: "babyRed")
+        tabBarViewController.tabBar.backgroundColor = .white
+        self.navigationController?.pushViewController(tabBarViewController, animated: true)
     }
-    
-    
-
-    
 
 }

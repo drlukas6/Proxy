@@ -42,6 +42,8 @@
 		7469080520C9F70300663F72 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469080320C9F70300663F72 /* CollectionViewCell.swift */; };
 		74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */; };
 		74F82FB920C98FFE0073DCF6 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F82FB720C98FFE0073DCF6 /* SearchView.xib */; };
+		F16DD95D20EE33EB00A7D2AD /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DD95B20EE33EB00A7D2AD /* ChatsViewController.swift */; };
+		F16DD95E20EE33EB00A7D2AD /* ChatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16DD95C20EE33EB00A7D2AD /* ChatsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		74F82FB720C98FFE0073DCF6 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		A508E177CB15B8AA3AFA2C06 /* Pods-Proxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.debug.xcconfig"; sourceTree = "<group>"; };
 		C84635E29B3773E39696135C /* Pods-Proxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proxy/Pods-Proxy.release.xcconfig"; sourceTree = "<group>"; };
+		F16DD95B20EE33EB00A7D2AD /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		F16DD95C20EE33EB00A7D2AD /* ChatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 				7469080320C9F70300663F72 /* CollectionViewCell.swift */,
 				2FD3BCF020ED24890091E11F /* SearchResultsViewController.swift */,
 				2FD3BCF420ED25310091E11F /* SearchResultTableViewCell.swift */,
+				F16DD95B20EE33EB00A7D2AD /* ChatsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				2F45D93320D411E600DAABB9 /* ListingView.xib */,
 				2FD3BCF120ED24890091E11F /* SearchResultsView.xib */,
 				2FD3BCF520ED25310091E11F /* SearchResultTableViewCell.xib */,
+				F16DD95C20EE33EB00A7D2AD /* ChatsView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				2F9D1EBB20D156E400E7C4A4 /* ChatView.xib in Resources */,
 				2FD3BCF320ED24890091E11F /* SearchResultsView.xib in Resources */,
 				7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */,
+				F16DD95E20EE33EB00A7D2AD /* ChatsView.xib in Resources */,
 				2F6A6EA020C9E55800BF328A /* ProfileView.xib in Resources */,
 				2F6A6E9F20C9E55800BF328A /* ProfileTableViewCell.xib in Resources */,
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
@@ -376,6 +383,7 @@
 			files = (
 				2F6A6E9820C9AA5100BF328A /* ViewControllerExtensions.swift in Sources */,
 				2FD3BCF220ED24890091E11F /* SearchResultsViewController.swift in Sources */,
+				F16DD95D20EE33EB00A7D2AD /* ChatsViewController.swift in Sources */,
 				2FD3BCF920ED28350091E11F /* UIImageExtensions.swift in Sources */,
 				74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */,
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
@@ -523,7 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22AZG63582;
+				DEVELOPMENT_TEAM = GX7UB7PCTF;
 				INFOPLIST_FILE = Proxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -540,7 +548,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22AZG63582;
+				DEVELOPMENT_TEAM = GX7UB7PCTF;
 				INFOPLIST_FILE = Proxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

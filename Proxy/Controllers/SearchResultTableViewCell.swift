@@ -37,6 +37,7 @@ class SearchResultTableViewCell: UITableViewCell {
             }
             else {
                 self.listingImage.image = UIImage(data: data!)
+                self.listingImage.layer.cornerRadius = 15.0
             }
         }
     }

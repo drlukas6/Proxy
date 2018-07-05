@@ -25,7 +25,6 @@ class ChatViewController: JSQMessagesViewController {
     
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
-    var listing: Listing!
     
 
     override func viewDidLoad() {
@@ -33,11 +32,8 @@ class ChatViewController: JSQMessagesViewController {
         initialSetup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        addMessage(withId: senderId, name: senderDisplayName, text: "Hey! I am interested in \(listing.title)!")
-    }
-    
     func initialSetup() {
+        navigationController?.isNavigationBarHidden = false
         outgoingBubbleImageView = setupOutgoingMessage()
         incomingBubbleImageView = setupIncomingBubble()
         messageRef = channelReference.child("messages")
@@ -62,11 +58,8 @@ class ChatViewController: JSQMessagesViewController {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
         
-        if message.senderId == senderId {
-            cell.textView?.textColor = UIColor.white
-        } else {
-            cell.textView?.textColor = UIColor.black
-        }
+        cell.textView?.textColor = UIColor.white
+        
         return cell
     }
     
@@ -85,13 +78,17 @@ class ChatViewController: JSQMessagesViewController {
         finishSendingMessage() // 5
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        return messages[indexPath.item].senderId == self.senderId ? outgoingBubbleImageView : incomingBubbleImageView
+    }
+    
     func setupOutgoingMessage() -> JSQMessagesBubbleImage {
         let bubbleImage = JSQMessagesBubbleImageFactory()
-        return bubbleImage!.outgoingMessagesBubbleImage(with: UIColor(named: "seaBlue"))
+        return bubbleImage!.outgoingMessagesBubbleImage(with: UIColor(named: "trafficLightGreen"))
     }
     func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor(named: "skyBlue"))
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor(named: "trafficLightYellow"))
     }
     
     func addMessage(withId id: String, name: String, text: String) {

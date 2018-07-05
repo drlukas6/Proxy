@@ -13,7 +13,6 @@ import FirebaseStorage
 
 class ListingViewController: UIViewController {
 
-    @IBOutlet weak var listingTitle: UILabel!
     @IBOutlet weak var listingOwner: UILabel!
     @IBOutlet weak var listingPrice: UILabel!
     @IBOutlet weak var listingImage: UIImageView!
@@ -30,19 +29,24 @@ class ListingViewController: UIViewController {
     }
     
     func initialSetup() {
+        navigationController?.isNavigationBarHidden = false
+        self.title = listing.title
         listingImage.layer.cornerRadius = 20.0
         listingImage.layer.masksToBounds = true
+        setImage()
         listingLocation.layer.cornerRadius = 20.0
+        setLocation()
         listingDescription.layer.cornerRadius = 20.0
-        contactButton.layer.cornerRadius = contactButton.bounds.height / 2
-        
-        listingTitle.text = listing.title
+        listingDescription.text = listing.description
+        if listing.ownerId == Auth.auth().currentUser!.uid {
+            contactButton.isHidden = true
+        }
+        else {
+            contactButton.layer.cornerRadius = contactButton.bounds.height / 2
+            contactButton.addTarget(self, action: #selector(startChat), for: .touchUpInside)
+        }
         listingOwner.text = "From " + listing.ownerDisplayName
         listingPrice.text = "HRK" + String(format: "%.2f", listing.price)
-        listingDescription.text = listing.description
-        
-        setImage()
-        setLocation()
     }
     
     func setImage() {
@@ -74,11 +78,17 @@ class ListingViewController: UIViewController {
     @objc func startChat() {
         let channel = ChatChannel(listing: listing)
         let channelDbReference = DatabaseHelper.init().getChatReference(for: channel)
-        let chatVC = ChatViewController()
-        chatVC.senderId = Auth.auth().currentUser!.uid
-        chatVC.senderDisplayName = Auth.auth().currentUser?.displayName
-        chatVC.channel = channel
-        chatVC.channelReference = channelDbReference
+        channelDbReference.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.childrenCount < 1 {
+                DatabaseHelper.init().createChatChannel(channel: channel)
+            }
+            let chatVC = ChatViewController()
+            chatVC.senderId = Auth.auth().currentUser!.uid
+            chatVC.senderDisplayName = Auth.auth().currentUser?.displayName
+            chatVC.channel = channel
+            chatVC.channelReference = channelDbReference
+            self.navigationController?.pushViewController(chatVC, animated: true)
+        }
     }
 
 

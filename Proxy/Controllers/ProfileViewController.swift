@@ -28,7 +28,16 @@ class ProfileViewController: UIViewController {
     }
     
     func setupView() {
+        self.hideKeyboardWhenTappedAround()
+        self.title = "Profile"
+        navigationController?.isNavigationBarHidden = true
         addNewListingButton.layer.cornerRadius = 17
+        tableView.layer.cornerRadius = 17
+        if let user = Auth.auth().currentUser {
+            usernameLabel.text = user.displayName
+            emailLabel.text = user.email
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: NibNames.profileTableViewCell, bundle: nil), forCellReuseIdentifier: cellId)
@@ -37,7 +46,8 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         profileListings = [Listing]()
-        DatabaseHelper.init().getListingByUserId(userId: (Auth.auth().currentUser?.uid)!) { (response) in
+        
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
             for json in response {
                 self.profileListings.append(Listing(json: json))
             }
@@ -48,6 +58,17 @@ class ProfileViewController: UIViewController {
     @IBAction func addNewListing(_ sender: Any) {
         let vc = AddListingViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func updateTableData() {
+        profileListings = [Listing]()
+        
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
+            for json in response {
+                self.profileListings.append(Listing(json: json))
+            }
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -90,7 +111,6 @@ extension ProfileViewController : UITableViewDelegate {
         let listingController = ListingViewController()
         listingController.listing = listing
         navigationController?.pushViewController(listingController, animated: true)
-        
-        
     }
 }
+

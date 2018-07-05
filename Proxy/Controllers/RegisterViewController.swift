@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
     
     func initialSetup() {
         self.hideKeyboardWhenTappedAround() 
-        
+        self.title = "Register"
         createAccountButton.layer.cornerRadius = 22.5
     }
 

@@ -19,7 +19,6 @@
                 <outlet property="listingLocation" destination="9RH-Ym-Ml1" id="gn1-U2-qvz"/>
                 <outlet property="listingOwner" destination="86a-vT-NIM" id="EOS-QN-PfD"/>
                 <outlet property="listingPrice" destination="jhK-VL-6VT" id="EuV-lF-7wa"/>
-                <outlet property="listingTitle" destination="yFE-8A-NvJ" id="9JP-Rg-8Pt"/>
                 <outlet property="mainScrollView" destination="Mue-Sb-bvN" id="tP3-Z3-d20"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,42 +34,30 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-Rg-Fke">
                             <rect key="frame" x="0.0" y="16" width="375" height="100"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike FreeRun 5.0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFE-8A-NvJ">
-                                    <rect key="frame" x="16" y="16" width="210" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                    <color key="textColor" name="seaBlue"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRK499" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-VL-6VT">
-                                    <rect key="frame" x="234" y="16" width="125" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="125" id="1GP-R9-NiC"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                    <color key="textColor" name="darkRed"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRK499" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-VL-6VT">
+                                    <rect key="frame" x="12" y="16" width="149.5" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="babyRed"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Student123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86a-vT-NIM">
-                                    <rect key="frame" x="16" y="50" width="130" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                    <rect key="frame" x="12" y="64" width="137.5" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                     <color key="textColor" name="skyBlue"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="86a-vT-NIM" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="16" id="89Q-W0-30X"/>
-                                <constraint firstItem="jhK-VL-6VT" firstAttribute="leading" secondItem="yFE-8A-NvJ" secondAttribute="trailing" constant="8" id="DZv-l2-kzu"/>
-                                <constraint firstItem="yFE-8A-NvJ" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="16" id="Hkp-S6-0an"/>
-                                <constraint firstItem="86a-vT-NIM" firstAttribute="top" secondItem="yFE-8A-NvJ" secondAttribute="bottom" constant="4" id="ILk-JO-W4e"/>
-                                <constraint firstItem="jhK-VL-6VT" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="L13-1F-qPK"/>
-                                <constraint firstItem="yFE-8A-NvJ" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="i7B-S6-WLO"/>
+                                <constraint firstItem="86a-vT-NIM" firstAttribute="top" secondItem="jhK-VL-6VT" secondAttribute="bottom" constant="5" id="Es2-KS-jHt"/>
+                                <constraint firstItem="jhK-VL-6VT" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="12" id="Sg3-vJ-0o3"/>
+                                <constraint firstItem="jhK-VL-6VT" firstAttribute="top" secondItem="QXg-Rg-Fke" secondAttribute="top" constant="16" id="VMu-jP-7iS"/>
+                                <constraint firstItem="86a-vT-NIM" firstAttribute="leading" secondItem="QXg-Rg-Fke" secondAttribute="leading" constant="12" id="cW8-IT-MQw"/>
                                 <constraint firstAttribute="height" constant="100" id="xxz-vK-Uto"/>
-                                <constraint firstAttribute="trailing" secondItem="jhK-VL-6VT" secondAttribute="trailing" constant="16" id="yct-PI-AQ1"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-94-h3c">
-                            <rect key="frame" x="0.0" y="124" width="375" height="583.5"/>
+                            <rect key="frame" x="0.0" y="124" width="375" height="639.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBY-jb-7uS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -144,6 +131,12 @@
                                         <constraint firstItem="Wvm-nb-j8G" firstAttribute="top" secondItem="yx8-ov-0LV" secondAttribute="top" id="rc1-Cj-FmX"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suF-0M-QZy">
+                                    <rect key="frame" x="0.0" y="589.5" width="375" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Gab-cT-g4N"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -159,7 +152,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" name="lightGreen"/>
+            <color key="backgroundColor" name="modernBlue"/>
             <constraints>
                 <constraint firstItem="Mue-Sb-bvN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Bus-ni-NZA"/>
                 <constraint firstItem="Mue-Sb-bvN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ket-6P-5q5"/>
@@ -172,11 +165,11 @@
     </objects>
     <resources>
         <image name="Placeholder" width="1500" height="1500"/>
-        <namedColor name="darkRed">
-            <color red="0.41960784313725491" green="0.15294117647058825" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="babyRed">
+            <color red="0.91764705882352937" green="0.23529411764705882" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="lightGreen">
-            <color red="0.89411764705882357" green="0.99215686274509807" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="modernBlue">
+            <color red="0.19200000166893005" green="0.39599999785423279" blue="0.64300000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="seaBlue">
             <color red="0.066666666666666666" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

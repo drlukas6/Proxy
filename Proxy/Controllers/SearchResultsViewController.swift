@@ -19,7 +19,9 @@ class SearchResultsViewController: UIViewController {
     }
     
     func initialSetup() {
+        self.title = "Search Results"
         navigationController?.isNavigationBarHidden = false
+        tableView.layer.cornerRadius = 15.0
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: NibNames.searchResultTableViewCell, bundle: nil), forCellReuseIdentifier: "SearchResultCellId")
@@ -47,6 +49,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let listingVC = ListingViewController()
         listingVC.listing = searchResults[indexPath.row]
         
