@@ -11,6 +11,13 @@ import FirebaseDatabase
 import FirebaseAuth
 
 struct DatabaseHelper {
+    
+    enum Condition {
+        case category(category: Category)
+        case title(title: String)
+        case ownerId
+    }
+    
     let BaseReference = Database.database().reference()
     var ChatsReference: DatabaseReference {
         return BaseReference.child("Chat")
@@ -28,44 +35,39 @@ struct DatabaseHelper {
         return ChatsReference.child(channel.id)
     }
     
-    func getListingsByCategory(category: Category, completionHandler: @escaping ([[String : Any]]) -> () ) {
+    func by(title: String, in listing: [String : Any]) -> Bool {
+        return (listing[ListingKeys.title] as! String).contains(title)
+    }
+    
+    func by(category: String, in listing: [String : Any]) -> Bool {
+        return (listing[ListingKeys.category] as! String) == category
+    }
+    
+    func by(ownerId: String, in listing: [String : Any]) -> Bool {
+        return (listing[ListingKeys.ownerId] as! String) == ownerId
+    }
+    
+    func getListingsBy(condition: Condition, completionHandler: @escaping ([[String : Any]]) -> () ) {
         var toReturn = [[String : Any]]()
         ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
             let enumerator = snapshot.children
-            while let listingPreParsed = enumerator.nextObject() as? DataSnapshot, let parsedListing = listingPreParsed.value as? [String : Any], let listingCategory = parsedListing[ListingKeys.category] as? String  {
-                if listingCategory == category.rawValue {
-                    toReturn.append(parsedListing)
+            while let listingPreParsed = enumerator.nextObject() as? DataSnapshot, let parsedListing = listingPreParsed.value as? [String : Any] {
+                switch condition {
+                case .category(let category):
+                    if (parsedListing[ListingKeys.category] as! String) == category.rawValue {
+                        toReturn.append(parsedListing)
+                    }
+                case .title(let title):
+                    if (parsedListing[ListingKeys.title] as! String).contains(title) {
+                        toReturn.append(parsedListing)
+                    }
+                case .ownerId:
+                    if (parsedListing[ListingKeys.ownerId] as! String) == Auth.auth().currentUser!.uid {
+                        toReturn.append(parsedListing)
+                    }
                 }
             }
             completionHandler(toReturn)
         }
     }
-    
-    func getListingsByName(name: String, completionHandler: @escaping ([[String : Any]]) -> () ) {
-        var toReturn = [[String : Any]]()
-        ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
-            let enumerator = snapshot.children
-            while let listingPreParsed = enumerator.nextObject() as? DataSnapshot, let parsedListing = listingPreParsed.value as? [String : Any], let listingTitle = parsedListing[ListingKeys.title] as? String  {
-                if listingTitle.contains(name) {
-                    toReturn.append(parsedListing)
-                }
-            }
-            completionHandler(toReturn)
-        }
-    }
-    
-    func getListingByUserId(userId: String, completionHandler: @escaping ([[String : Any]]) -> () ) {
-        var toReturn = [[String : Any]]()
-        ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
-            let enumerator = snapshot.children
-            while let listingPreParsed = enumerator.nextObject() as? DataSnapshot, let parsedListing = listingPreParsed.value as? [String : Any], let listingOwner = parsedListing[ListingKeys.ownerId] as? String  {
-                if listingOwner == Auth.auth().currentUser!.uid {
-                    toReturn.append(parsedListing)
-                }
-            }
-            completionHandler(toReturn)
-        }
-    }
-    
-    
 }

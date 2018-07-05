@@ -64,14 +64,8 @@ class LogInViewController: UIViewController {
 //        let cVC = ChatViewController()
 //        self.present(cVC, animated: true, completion: nil)
         
-        DatabaseHelper.init().getListingsByName(name: "tit") { (result) in
-            var listings: [Listing] = []
-            for json in result {
-                listings.append(Listing(json: json))
-            }
-            let searchVC = SearchResultsViewController()
-            searchVC.searchResults = listings
-            self.present(searchVC, animated: true, completion: nil)
+        DatabaseHelper.init().getListingsBy(condition: .title(title: "ti")) { (response) in
+            print(response)
         }
     }
     

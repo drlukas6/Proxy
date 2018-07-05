@@ -43,7 +43,8 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         profileListings = [Listing]()
-        DatabaseHelper.init().getListingByUserId(userId: (Auth.auth().currentUser?.uid)!) { (response) in
+        
+        DatabaseHelper.init().getListingsBy(condition: .ownerId) { (response) in
             for json in response {
                 self.profileListings.append(Listing(json: json))
             }
@@ -58,7 +59,8 @@ class ProfileViewController: UIViewController {
     
     func updateTableData() {
         profileListings = [Listing]()
-        DatabaseHelper.init().getListingByUserId(userId: (Auth.auth().currentUser?.uid)!) { (response) in
+        
+        DatabaseHelper.init().getListingsBy(condition: .ownerId) { (response) in
             for json in response {
                 self.profileListings.append(Listing(json: json))
             }
