@@ -22,9 +22,18 @@ class ProfileTableViewCell: UITableViewCell {
     
     func setupCell (listing : Listing) {
         itemTitleLabel.text = listing.title
-        
         let now = Date()
-        let endDate = now.addingTimeInterval(24 * 3600 * 17)
+        let endDate = now.addingTimeInterval(24 * 3600 * 17) //Obrisati nakon datum updatea
+//        let endDate = listing.dateUpload.addingTimeInterval(30 * 3600 * 24)
+//        if now < endDate {
+//            let formatter = DateComponentsFormatter()
+//            formatter.allowedUnits = [.day]
+//            formatter.unitsStyle = .full
+//            dateLabel.text = formatter.string(from: now, to: endDate)!
+//        }
+//        else {
+//            dateLabel.text = "Expired"
+//        }
 
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.day]
@@ -40,5 +49,4 @@ class ProfileTableViewCell: UITableViewCell {
             }
         }
     }
-    
 }

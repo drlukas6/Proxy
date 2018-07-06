@@ -11,6 +11,9 @@ import MapKit
 import FirebaseAuth
 import FirebaseStorage
 
+protocol UpdateListingDelegat {
+    func udateListing (listing : Listing)
+}
 
 class AddListingViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -37,11 +40,50 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     var imageData : Data?
     var listing : Listing?
+    var delegat : UpdateListingDelegat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        setupData()
+    }
+    
+    func setupData () {
+        if let updateListing = listing {
+            titleTextField.text = updateListing.title
+            priceTextField.text = String(updateListing.price)
+            setLocation(listing: updateListing)
+            descriptionTextField.text = updateListing.description
+            let category = updateListing.category
+            if let index = categorieList.index(of: category) {
+                categoryPicker.selectRow(index, inComponent: 0, animated: true)
+            }
+        }
+    }
+    
+    func setLocation(listing: Listing) {
+        let coordinates = listing.location.split(separator: ",")
+        let annotaion = MKPointAnnotation()
+        annotaion.coordinate = CLLocationCoordinate2DMake(Double(coordinates[0])!, Double(coordinates[1])!)
+        locationMap.addAnnotation(annotaion)
+        
+        let location = CLLocationCoordinate2DMake(Double(coordinates[0])!, Double(coordinates[1])!)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegionMake(location, span)
+        
+        CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: location.latitude, longitude: location.longitude)) { (placemark, error) in
+            if let error = error {
+                print("Error geting adress")
+            }
+            else {
+                if let place = placemark?[0], let adress = place.thoroughfare, let country = place.country, let city = place.locality {
+                    self.setLocationTextField.text = adress + ", " + city + ", " + country
+                }
+            }
+        }
+        
+        self.locationMap.setRegion(region, animated: true)
     }
     
     func setupView() {
@@ -57,25 +99,33 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         locationMap.layer.cornerRadius = 20.0
         descriptionTextField.layer.cornerRadius = 20.0
         self.hideKeyboardWhenTappedAround()
+        if let updateListing = listing {
+            titleLabel.isHidden = false
+            priceLabel.isHidden = false
+            locationLabel.isHidden = false
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let newListing = listing {
+            delegat?.udateListing(listing: newListing)
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if (textField.tag == 1) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.titleLabel.isHidden = false
-                self.titleLabel.textColor = UIColor.gray
             }, completion: nil)
         }
         else if textField.tag == 2 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.priceLabel.isHidden = false
-                self.priceLabel.textColor = UIColor.gray
             }, completion: nil)
         }
         else if textField.tag == 3 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.locationLabel.isHidden = false
-                self.locationLabel.textColor = UIColor.gray
             }, completion: nil)
         }
     }
@@ -197,7 +247,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     
     @IBAction func submit(_ sender: Any) {
         
-        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), locationMap.annotations.count != 0, let data = imageData else {
+        guard let title = titleTextField.text, let description = descriptionTextField.text, let priceString = priceTextField.text, let price = Float(priceString), locationMap.annotations.count != 0 else {
             showToast(message: "Fill in required informations!")
             if titleTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
                 UIView.animate(withDuration: 0.5) {
@@ -227,14 +277,45 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             return
         }
         
+        
+        
         let latitude = locationMap.annotations[0].coordinate.latitude
         let longitude = locationMap.annotations[0].coordinate.longitude
         let categoryIndex = categoryPicker.selectedRow(inComponent: 0)
         let category = categorieList[categoryIndex]
         
-        listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
         
-        addToStorage(listing: listing!, data: imageData)
+        if let updatedListing = listing {
+            updatedListing.title = title
+            updatedListing.price = price
+            updatedListing.description = description
+            updatedListing.location = latitude.description + "," + longitude.description
+            updatedListing.category = category
+            
+            if let imageData = imageData {
+                addToStorage(listing: updatedListing, data: imageData)
+            }
+            DatabaseHelper.init().ListingsReference.child(updatedListing.id).setValue(updatedListing.databaseFormat())
+            resetView()
+            
+            navigationController?.popViewController(animated: true)
+        }
+        else {
+            guard let data = imageData else{
+                UIView.animate(withDuration: 0.5) {
+                    self.imageRequiredLabel.isHidden = false
+                }
+                
+                showToast(message: "Upload image")
+                return
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, date:dateFormatter.string(from: Date()), category: category)
+            
+            addToStorage(listing: listing!, data: imageData)
+        }
+        
         
         resetView()
         tabBarController?.selectedIndex = 0
@@ -286,10 +367,12 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func resetView() {
-        titleLabel.text = ""
-        priceLabel.text = ""
+        titleTextField.text = ""
+        priceTextField.text = ""
         descriptionTextField.text = ""
         setLocationTextField.text = ""
+        let annotations = self.locationMap.annotations
+        self.locationMap.removeAnnotations(annotations)
         imageData = nil
     }
 }

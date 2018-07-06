@@ -40,6 +40,7 @@ class ListingViewController: UIViewController {
         listingDescription.text = listing.description
         if listing.ownerId == Auth.auth().currentUser!.uid {
             contactButton.isHidden = true
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ListingViewController.editListing))
         }
         else {
             contactButton.layer.cornerRadius = contactButton.bounds.height / 2
@@ -47,6 +48,13 @@ class ListingViewController: UIViewController {
         }
         listingOwner.text = "From " + listing.ownerDisplayName
         listingPrice.text = "HRK" + String(format: "%.2f", listing.price)
+    }
+    
+    @objc func editListing() {
+        let vc = AddListingViewController()
+        vc.listing = listing
+        vc.delegat = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setImage() {
@@ -90,6 +98,11 @@ class ListingViewController: UIViewController {
             self.navigationController?.pushViewController(chatVC, animated: true)
         }
     }
+}
 
-
+extension ListingViewController : UpdateListingDelegat {
+    func udateListing (listing : Listing) {
+        self.listing = listing
+        initialSetup()
+    }
 }

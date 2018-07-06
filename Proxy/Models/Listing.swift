@@ -11,16 +11,17 @@ import Foundation
 
 class Listing {
     let id: String
-    let title: String
+    var title: String
     let ownerId: String
     let ownerDisplayName: String
-    let price: Float
-    let description: String
+    var price: Float
+    var description: String
     var imageData: [String]
-    let location: String
-    let category: Category
+    var location: String
+    var date: String
+    var category: Category
     
-    init(id: String, title: String, owner: String, ownerDisplayName: String, price: Float, description: String, imageData: [String], location: String, category: Category) {
+    init(id: String, title: String, owner: String, ownerDisplayName: String, price: Float, description: String, imageData: [String], location: String, date: String, category: Category) {
         self.id = id
         self.title = title
         self.ownerId = owner
@@ -29,6 +30,7 @@ class Listing {
         self.description = description
         self.imageData = imageData
         self.location = location
+        self.date = date
         self.category = category
     }
     
@@ -42,12 +44,13 @@ class Listing {
         let location = json[ListingKeys.location] as! String
         let category = json[ListingKeys.category] as! String
         let id = json[ListingKeys.id] as! String
+        let date = json[ListingKeys.date] as! String
         
-        self.init(id: id, title: title, owner: owner, ownerDisplayName: ownerDisplayName, price: price, description: description, imageData: imageData, location: location, category: Category(category: category))
+        self.init(id: id, title: title, owner: owner, ownerDisplayName: ownerDisplayName, price: price, description: description, imageData: imageData, location: location, date: date, category: Category(category: category))
     }
     
     func databaseFormat() -> [String : Any] {
-        return [ListingKeys.id: self.id, ListingKeys.title : self.title, ListingKeys.ownerId: self.ownerId, ListingKeys.ownerDisplayName : self.ownerDisplayName, ListingKeys.price: self.price, ListingKeys.description: self.description, ListingKeys.imageData: imageData, ListingKeys.location: self.location, ListingKeys.category: self.category.rawValue]
+        return [ListingKeys.id: self.id, ListingKeys.title : self.title, ListingKeys.ownerId: self.ownerId, ListingKeys.ownerDisplayName : self.ownerDisplayName, ListingKeys.price: self.price, ListingKeys.description: self.description, ListingKeys.imageData: imageData, ListingKeys.location: self.location, ListingKeys.category: self.category.rawValue, ListingKeys.date: self.date]
     }
 }
 

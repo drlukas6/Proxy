@@ -22,7 +22,9 @@ struct DatabaseHelper {
     }
     
     func createBasicListing() {
-        let listing = Listing(id: UUID().uuidString, title: "Audi", owner: "NF89432NF2923", ownerDisplayName: "Adolf", price: 999, description: "foo", imageData: [], location: "-1.492, 2.423", category: Category.drinks)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let listing = Listing(id: UUID().uuidString, title: "Audi", owner: "NF89432NF2923", ownerDisplayName: "Adolf", price: 999, description: "foo", imageData: [], location: "-1.492, 2.423", date: dateFormatter.string(from: Date()), category: Category.drinks)
         ListingsReference.child(listing.id).setValue(listing.databaseFormat())
     }
     
