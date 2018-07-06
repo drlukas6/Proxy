@@ -11,14 +11,14 @@ import Foundation
 
 class Listing {
     let id: String
-    let title: String
+    var title: String
     let ownerId: String
     let ownerDisplayName: String
-    let price: Float
-    let description: String
+    var price: Float
+    var description: String
     var imageData: [String]
-    let location: String
-    let category: Category
+    var location: String
+    var category: Category
     
     init(id: String, title: String, owner: String, ownerDisplayName: String, price: Float, description: String, imageData: [String], location: String, category: Category) {
         self.id = id

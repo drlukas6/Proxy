@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addNewListingButton: UIButton!
+    @IBOutlet weak var signOutButton: UIButton!
     
     var profileListings = [Listing]()
     
@@ -31,8 +31,9 @@ class ProfileViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         self.title = "Profile"
         navigationController?.isNavigationBarHidden = true
-        addNewListingButton.layer.cornerRadius = 17
         tableView.layer.cornerRadius = 17
+        signOutButton.layer.cornerRadius = 17
+
         if let user = Auth.auth().currentUser {
             usernameLabel.text = user.displayName
             emailLabel.text = user.email
@@ -44,18 +45,19 @@ class ProfileViewController: UIViewController {
 
     }
     
+    @IBAction func signOut(_ sender: Any) {
+        try? Auth.auth().signOut()
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         profileListings = [Listing]()
+        self.navigationController?.isNavigationBarHidden = true
         
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
             self.profileListings = response.compactMap { Listing(json: $0) }
             self.tableView.reloadData()
         }
-    }
-    
-    @IBAction func addNewListing(_ sender: Any) {
-        let vc = AddListingViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func updateTableData() {

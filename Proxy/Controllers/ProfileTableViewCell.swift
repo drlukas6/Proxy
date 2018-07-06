@@ -22,7 +22,6 @@ class ProfileTableViewCell: UITableViewCell {
     
     func setupCell (listing : Listing) {
         itemTitleLabel.text = listing.title
-        
         let now = Date()
         let endDate = now.addingTimeInterval(24 * 3600 * 17)
 
@@ -40,5 +39,4 @@ class ProfileTableViewCell: UITableViewCell {
             }
         }
     }
-    
 }
