@@ -60,7 +60,7 @@ class LogInViewController: UIViewController {
     
     func setupTabBar() {
         let searchViewController = SearchViewController()
-        searchViewController.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(named: "shop"), tag: 1)
+        searchViewController.tabBarItem = UITabBarItem(title: "Marketplace", image: UIImage(named: "shop"), tag: 1)
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
         let addListingViewController = AddListingViewController()

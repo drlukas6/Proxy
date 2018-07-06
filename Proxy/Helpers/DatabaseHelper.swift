@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 struct DatabaseHelper {
     let BaseReference = Database.database().reference()
@@ -23,6 +24,25 @@ struct DatabaseHelper {
     func createBasicListing() {
         let listing = Listing(id: UUID().uuidString, title: "Audi", owner: "NF89432NF2923", ownerDisplayName: "Adolf", price: 999, description: "foo", imageData: [], location: "-1.492, 2.423", category: Category.drinks)
         ListingsReference.child(listing.id).setValue(listing.databaseFormat())
+    }
+    
+    func addToStorage(listing: Listing, data: Data?) {
+        guard let data = data else { return }
+        let imageReference = Storage.storage().reference().child("images/\(listing.id).png")
+        imageReference.putData(data, metadata: nil) { (metadata, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            imageReference.downloadURL(completion: { (url, error) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                listing.imageData = [url!.absoluteString]
+                self.ListingsReference.child(listing.id).setValue(listing.databaseFormat())
+            })
+        }
     }
     
     func getChatReference(for channel: ChatChannel) -> DatabaseReference {

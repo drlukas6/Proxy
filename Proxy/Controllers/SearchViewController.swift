@@ -50,9 +50,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var listings: [Listing] = []
         
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byTitle, comparison: searchTextField.text ?? "") { (response) in
-            for json in response {
-                listings.append(Listing(json: json))
-            }
+            listings = response.compactMap { Listing(json: $0) }
             let searchResultsVC = SearchResultsViewController()
             searchResultsVC.searchResults = listings
             self.navigationController?.pushViewController(searchResultsVC, animated: true)
