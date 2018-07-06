@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController {
         profileListings = [Listing]()
         
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
-            self.profileListings = response.compactMap { Listing(json: $0) }
+            self.profileListings = response.flatMap { Listing(json: $0) }
             self.tableView.reloadData()
         }
     }
@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController {
         profileListings = [Listing]()
         
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
-            self.profileListings = response.compactMap { Listing(json: $0) }
+            self.profileListings = response.flatMap { Listing(json: $0) }
             self.tableView.reloadData()
         }
     }

@@ -65,7 +65,7 @@ struct DatabaseHelper {
         ListingsReference.observeSingleEvent(of: .value) { (snapshot) in
             let enumerator = snapshot.children
             let childrenSnapshot = (enumerator.allObjects as! [DataSnapshot])
-            let allParsedListings = childrenSnapshot.compactMap { $0.value as? [String : Any] }
+            let allParsedListings = childrenSnapshot.flatMap { $0.value as? [String : Any] }
             completionHandler(allParsedListings.filter({ (parsedListing) -> Bool in
                 return condition(comparison, parsedListing)
             }))
@@ -80,7 +80,7 @@ struct DatabaseHelper {
         ChatsReference.observeSingleEvent(of: .value) { (snapshot) in
             let enumerator = snapshot.children
             let childrenSnapshot = (enumerator.allObjects as! [DataSnapshot])
-            let allParsedChatChannels = childrenSnapshot.compactMap { $0.value as? [String : Any] }
+            let allParsedChatChannels = childrenSnapshot.flatMap { $0.value as? [String : Any] }
             completionHandler(allParsedChatChannels.filter({ (parsedListing) -> Bool in
                 (parsedListing[ChatKeys.id] as! String).contains(Auth.auth().currentUser!.uid)
             }))

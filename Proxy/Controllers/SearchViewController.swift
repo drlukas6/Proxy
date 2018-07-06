@@ -49,11 +49,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchForListing() {
         var listings: [Listing] = []
         
+        
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byTitle, comparison: searchTextField.text ?? "") { (response) in
-            listings = response.compactMap { Listing(json: $0) }
+            listings = response.flatMap { Listing(json: $0) }
             let searchResultsVC = SearchResultsViewController()
             searchResultsVC.searchResults = listings
             self.navigationController?.pushViewController(searchResultsVC, animated: true)
+        }
+        if (listings.count < 10){
+            
         }
     }
     
