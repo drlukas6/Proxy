@@ -21,6 +21,7 @@ class SearchResultsViewController: UIViewController {
     func initialSetup() {
         self.title = "Search Results"
         navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         tableView.layer.cornerRadius = 15.0
         tableView.delegate = self
         tableView.dataSource = self
