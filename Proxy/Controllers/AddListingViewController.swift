@@ -309,7 +309,9 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
                 showToast(message: "Upload image")
                 return
             }
-            listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, category: category)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, date:dateFormatter.string(from: Date()), category: category)
             
             addToStorage(listing: listing!, data: imageData)
         }

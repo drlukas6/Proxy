@@ -31,6 +31,7 @@ struct ListingKeys {
     static let imageData = "imageData"
     static let location = "location"
     static let category = "category"
+    static let date = "date"
 }
 
 struct ChatKeys {
