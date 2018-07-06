@@ -74,8 +74,8 @@ class ListingViewController: UIViewController {
     }
     
     
-    
-    @objc func startChat() {
+    @objc
+    func startChat() {
         let channel = ChatChannel(listing: listing)
         let channelDbReference = DatabaseHelper.init().getChatReference(for: channel)
         channelDbReference.observeSingleEvent(of: .value) { (snapshot) in

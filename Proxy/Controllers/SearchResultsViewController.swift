@@ -26,9 +26,6 @@ class SearchResultsViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: NibNames.searchResultTableViewCell, bundle: nil), forCellReuseIdentifier: "SearchResultCellId")
     }
-    
-    
-
 }
 
 
