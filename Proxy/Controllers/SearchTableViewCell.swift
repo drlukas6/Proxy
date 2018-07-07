@@ -41,18 +41,18 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     func setUpTableViewCell(category: Category) {
         self.categorieTitle.text = category.rawValue
         
-        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: Category.footwear.rawValue) { (response) in
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: categorieTitle.text!) { (response) in
             self.listings = response.flatMap { Listing(json: $0) }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categorieCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionId", for: indexPath) as! CollectionViewCell
-        if listings.count != 0 {
+        if listings.count > 4  {
             cell.setUpCollectionViewCell(listing: listings[indexPath.row])
         }
         return cell
