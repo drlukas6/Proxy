@@ -74,6 +74,16 @@ struct DatabaseHelper {
         }
     }
     
+    func deleteListing(listing: Listing, tableView: UITableView) {
+        ListingsReference.child(listing.id).removeValue()
+        Storage.storage().reference().child("images/\(listing.id).png").delete { (error) in
+            if let error = error {
+                print(error)
+            }
+            tableView.reloadData()
+        }
+    }
+    
     func createChatChannel(channel: ChatChannel) {
         ChatsReference.child(channel.id).setValue(channel.databaseFormat())
     }
