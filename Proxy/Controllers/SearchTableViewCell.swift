@@ -12,11 +12,19 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var categorieCollectionView: UICollectionView!
     @IBOutlet weak var categorieTitle: UILabel!
     
+    var listings: [Listing] = [] {
+        didSet {
+            categorieCollectionView.reloadData()
+        }
+    }
+    var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         initialSetup()
     }
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -32,15 +40,21 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     
     func setUpTableViewCell(category: Category) {
         self.categorieTitle.text = category.rawValue
+        
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: Category.footwear.rawValue) { (response) in
+            self.listings = response.flatMap { Listing(json: $0) }
         }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categorieCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionId", for: indexPath) as! CollectionViewCell
-        cell.setUpCollectionViewCell()
+        if listings.count != 0 {
+            cell.setUpCollectionViewCell(listing: listings[indexPath.row])
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
@@ -48,8 +62,6 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
         let cellSize = CGSize(width: 200, height: 200)
         return cellSize
     }
-
-    
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
