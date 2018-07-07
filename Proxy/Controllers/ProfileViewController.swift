@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     
@@ -16,6 +17,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var signOutButton: UIButton!
+    
+    @IBOutlet weak var avatarColletionView: UICollectionView!
+    @IBOutlet weak var avatarView: UIView!
     
     var profileListings = [Listing]()
     
@@ -30,7 +34,17 @@ class ProfileViewController: UIViewController {
     func setupView() {
         self.hideKeyboardWhenTappedAround()
         self.title = "Profile"
+        UIView.animate(withDuration: 0) {
+            self.avatarView.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.size.height)
+        }
         navigationController?.isNavigationBarHidden = true
+        profileImage.isUserInteractionEnabled = true
+        profileImage.layer.cornerRadius = 56
+        profileImage.clipsToBounds = true
+        setImage()
+        avatarColletionView.delegate = self
+        avatarColletionView.dataSource = self
+        avatarColletionView.register(UINib(nibName: "ProfileAvatarPickerCell", bundle: nil), forCellWithReuseIdentifier: cellId)
         tableView.layer.cornerRadius = 17
         signOutButton.layer.cornerRadius = 17
 
@@ -42,7 +56,35 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: NibNames.profileTableViewCell, bundle: nil), forCellReuseIdentifier: cellId)
-
+        
+        //gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.chooseAvatar(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        profileImage.addGestureRecognizer(tapGesture)
+    }
+    
+    func setImage() {
+        if let user = Auth.auth().currentUser {
+            Storage.storage().reference(withPath: "/userAvatar/\(user.uid).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
+                if let err = error {
+                    print(err)
+                    self.profileImage.image = #imageLiteral(resourceName: "Placeholder")
+                }
+                else {
+                    if let imageData = data {
+                        self.profileImage.image = UIImage(data: imageData)
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func chooseAvatar(_ sender: Any) {
+        print("tap")
+        
+        UIView.animate(withDuration: 0.75) {
+            self.avatarView.transform = .identity
+        }
     }
     
     @IBAction func signOut(_ sender: Any) {
@@ -120,5 +162,41 @@ extension ProfileViewController : UITableViewDelegate {
             DatabaseHelper.init().deleteListing(listing: profileListings[indexPath.row], tableView: tableView)
         }
     }
+}
+
+extension ProfileViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProfileAvatarPickerCell
+        
+        cell.setupCell(index: indexPath.row)
+        
+        return cell
+
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        let cellSize = CGSize(width: 75, height: 75)
+        return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCell = collectionView.cellForItem(at: indexPath) as! ProfileAvatarPickerCell
+        self.profileImage.image = selectedCell.avatarImage.image
+        if let user = Auth.auth().currentUser {
+            let imageReference = Storage.storage().reference().child("userAvatar/\(user.uid).png")
+            if let image = self.profileImage.image, let dataImage = UIImagePNGRepresentation(image) {
+                imageReference.putData(dataImage)
+            }
+        }
+        UIView.animate(withDuration: 0.75) {
+            self.avatarView.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.size.height)
+        }
+    }
+    
+    
 }
 

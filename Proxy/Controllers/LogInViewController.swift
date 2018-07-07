@@ -45,6 +45,7 @@ class LogInViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (response, error) in
             if let error = error {
                 print(error.localizedDescription)
+                self.showToast(message: "Wrong e-mail or password!")
             }
             if let user = response?.user {
                 print("User \(user) logged in!")
@@ -56,6 +57,11 @@ class LogInViewController: UIViewController {
     @objc func registerUser() {
         let registerViewController = RegisterViewController()
         self.navigationController?.pushViewController(registerViewController, animated: true)
+    }
+    
+    @IBAction func aboutProxy(_ sender: Any) {
+        let vc = AboutProxyViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupTabBar() {

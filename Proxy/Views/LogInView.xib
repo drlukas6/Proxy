@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -77,16 +76,32 @@
                         </button>
                     </subviews>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Few-d6-QYA">
+                    <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="wuS-Ae-RFI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <state key="normal" title="About Proxy">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="aboutProxy:" destination="-1" eventType="touchUpInside" id="jvh-Ez-WTt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" name="trafficLightGreen"/>
             <constraints>
                 <constraint firstItem="ovI-Fb-MZo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="0Hk-mH-NJ7"/>
                 <constraint firstItem="g7F-3F-C6e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="C1G-u7-iEn"/>
                 <constraint firstItem="ovI-Fb-MZo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="GZU-Zd-MOE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Few-d6-QYA" secondAttribute="trailing" id="K4M-os-TII"/>
                 <constraint firstItem="g7F-3F-C6e" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QpG-IO-x31"/>
+                <constraint firstItem="Few-d6-QYA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cbO-xW-rLU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g7F-3F-C6e" secondAttribute="trailing" constant="16" id="pRN-xC-eeX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ovI-Fb-MZo" secondAttribute="trailing" constant="16" id="paL-xj-FTv"/>
                 <constraint firstItem="g7F-3F-C6e" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="swv-sW-Q6P"/>
+                <constraint firstItem="Few-d6-QYA" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="uMZ-ex-HHu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

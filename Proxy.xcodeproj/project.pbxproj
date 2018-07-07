@@ -26,6 +26,10 @@
 		2FD3BCF920ED28350091E11F /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3BCF820ED28350091E11F /* UIImageExtensions.swift */; };
 		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
 		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
+		316570A220F1047500642190 /* AboutProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316570A020F1047500642190 /* AboutProxyViewController.swift */; };
+		316570A320F1047500642190 /* AboutProxyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316570A120F1047500642190 /* AboutProxyViewController.xib */; };
+		3193B0F620F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193B0F420F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift */; };
+		3193B0F720F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3193B0F520F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib */; };
 		31B241A920D1758B00F72B7B /* AddListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B241A820D1758B00F72B7B /* AddListingViewController.swift */; };
 		31B241AB20D1759300F72B7B /* AddListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B241AA20D1759300F72B7B /* AddListingViewController.xib */; };
 		7414243F20C9728A009F3FD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414243E20C9728A009F3FD2 /* AppDelegate.swift */; };
@@ -66,6 +70,10 @@
 		2FD3BCF820ED28350091E11F /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		316570A020F1047500642190 /* AboutProxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProxyViewController.swift; sourceTree = "<group>"; };
+		316570A120F1047500642190 /* AboutProxyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutProxyViewController.xib; sourceTree = "<group>"; };
+		3193B0F420F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarPickerCell.swift; sourceTree = "<group>"; };
+		3193B0F520F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileAvatarPickerCell.xib; sourceTree = "<group>"; };
 		31B241A820D1758B00F72B7B /* AddListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListingViewController.swift; sourceTree = "<group>"; };
 		31B241AA20D1759300F72B7B /* AddListingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddListingViewController.xib; sourceTree = "<group>"; };
 		7414243B20C9728A009F3FD2 /* Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,16 +171,18 @@
 				31B241A820D1758B00F72B7B /* AddListingViewController.swift */,
 				2F45D93220D411E600DAABB9 /* ListingViewController.swift */,
 				2F6A6E9A20C9E54600BF328A /* ProfileTableViewCell.swift */,
+				3193B0F420F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift */,
 				2F6A6E9920C9E54600BF328A /* ProfileViewController.swift */,
 				74F82FB620C98FFE0073DCF6 /* SearchViewController.swift */,
+				746907FF20C99B0000663F72 /* SearchTableViewCell.swift */,
 				31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */,
 				2F9D1EB820D156E400E7C4A4 /* ChatViewController.swift */,
 				74570B9420C978CC003D48DD /* LogInViewController.swift */,
-				746907FF20C99B0000663F72 /* SearchTableViewCell.swift */,
 				7469080320C9F70300663F72 /* CollectionViewCell.swift */,
 				2FD3BCF020ED24890091E11F /* SearchResultsViewController.swift */,
 				2FD3BCF420ED25310091E11F /* SearchResultTableViewCell.swift */,
 				F16DD95B20EE33EB00A7D2AD /* ChatsViewController.swift */,
+				316570A020F1047500642190 /* AboutProxyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +196,7 @@
 				74570B9520C978CC003D48DD /* LogInView.xib */,
 				7469080020C99B0000663F72 /* SearchTableViewCell.xib */,
 				2F6A6E9D20C9E55800BF328A /* ProfileTableViewCell.xib */,
+				3193B0F520F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib */,
 				2F6A6E9E20C9E55800BF328A /* ProfileView.xib */,
 				7469080B20CAB3E800663F72 /* CollectionViewCell.xib */,
 				2F9D1EB920D156E400E7C4A4 /* ChatView.xib */,
@@ -193,6 +204,7 @@
 				2FD3BCF120ED24890091E11F /* SearchResultsView.xib */,
 				2FD3BCF520ED25310091E11F /* SearchResultTableViewCell.xib */,
 				F16DD95C20EE33EB00A7D2AD /* ChatsView.xib */,
+				316570A120F1047500642190 /* AboutProxyViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,6 +328,7 @@
 				74570B9E20C97A21003D48DD /* GoogleService-Info.plist in Resources */,
 				2FD3BCF720ED25310091E11F /* SearchResultTableViewCell.xib in Resources */,
 				2F9D1EBB20D156E400E7C4A4 /* ChatView.xib in Resources */,
+				3193B0F720F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib in Resources */,
 				2FD3BCF320ED24890091E11F /* SearchResultsView.xib in Resources */,
 				7469080220C99B0000663F72 /* SearchTableViewCell.xib in Resources */,
 				F16DD95E20EE33EB00A7D2AD /* ChatsView.xib in Resources */,
@@ -324,6 +337,7 @@
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
 				31B241AB20D1759300F72B7B /* AddListingViewController.xib in Resources */,
+				316570A320F1047500642190 /* AboutProxyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,10 +396,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F6A6E9820C9AA5100BF328A /* ViewControllerExtensions.swift in Sources */,
+				316570A220F1047500642190 /* AboutProxyViewController.swift in Sources */,
 				2FD3BCF220ED24890091E11F /* SearchResultsViewController.swift in Sources */,
 				F16DD95D20EE33EB00A7D2AD /* ChatsViewController.swift in Sources */,
 				2FD3BCF920ED28350091E11F /* UIImageExtensions.swift in Sources */,
 				74F82FB820C98FFE0073DCF6 /* SearchViewController.swift in Sources */,
+				3193B0F620F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift in Sources */,
 				74570B9620C978CC003D48DD /* LogInViewController.swift in Sources */,
 				2F6A6E9C20C9E54600BF328A /* ProfileTableViewCell.swift in Sources */,
 				7469080520C9F70300663F72 /* CollectionViewCell.swift in Sources */,
