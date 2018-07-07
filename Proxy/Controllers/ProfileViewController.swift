@@ -110,5 +110,15 @@ extension ProfileViewController : UITableViewDelegate {
         listingController.listing = listing
         navigationController?.pushViewController(listingController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            DatabaseHelper.init().deleteListing(listing: profileListings[indexPath.row], tableView: tableView)
+        }
+    }
 }
 
