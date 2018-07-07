@@ -22,8 +22,18 @@ class ProfileTableViewCell: UITableViewCell {
     
     func setupCell (listing : Listing) {
         itemTitleLabel.text = listing.title
-        dateLabel.text = listing.date
-
+        let formaterStD = DateFormatter()
+        formaterStD.dateFormat = "dd-MM-yyyy"
+        let now = Date()
+        if let date = formaterStD.date(from: listing.date)?.addingTimeInterval(30 * 3600 * 24), now < date {
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.day]
+            formatter.unitsStyle = .full
+            dateLabel.text = formatter.string(from: now, to: date)! + " left"
+        }
+        else {
+            dateLabel.text = "Expired"
+        }
         Storage.storage().reference(withPath: "/images/\(listing.id).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
             if let err = error {
                 print(err)
