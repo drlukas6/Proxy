@@ -107,6 +107,9 @@ class ProfileViewController: UIViewController {
         
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
             self.profileListings = response.flatMap { Listing(json: $0) }
+            self.profileListings.sort(by: { (listing1, listing2) -> Bool in
+                return listing1.date < listing2.date
+            })
             self.tableView.reloadData()
         }
     }
