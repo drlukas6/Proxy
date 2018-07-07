@@ -26,6 +26,8 @@
 		2FD3BCF920ED28350091E11F /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3BCF820ED28350091E11F /* UIImageExtensions.swift */; };
 		31201DE020C9803700A9B5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */; };
 		31201DE120C9803700A9B5E2 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31201DDF20C9803700A9B5E2 /* RegisterView.xib */; };
+		316570A220F1047500642190 /* AboutProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316570A020F1047500642190 /* AboutProxyViewController.swift */; };
+		316570A320F1047500642190 /* AboutProxyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316570A120F1047500642190 /* AboutProxyViewController.xib */; };
 		3193B0F620F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193B0F420F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift */; };
 		3193B0F720F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3193B0F520F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib */; };
 		31B241A920D1758B00F72B7B /* AddListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B241A820D1758B00F72B7B /* AddListingViewController.swift */; };
@@ -68,6 +70,8 @@
 		2FD3BCF820ED28350091E11F /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		31201DDE20C9803700A9B5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		31201DDF20C9803700A9B5E2 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		316570A020F1047500642190 /* AboutProxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProxyViewController.swift; sourceTree = "<group>"; };
+		316570A120F1047500642190 /* AboutProxyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutProxyViewController.xib; sourceTree = "<group>"; };
 		3193B0F420F0EE9D008EAA2A /* ProfileAvatarPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarPickerCell.swift; sourceTree = "<group>"; };
 		3193B0F520F0EE9D008EAA2A /* ProfileAvatarPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileAvatarPickerCell.xib; sourceTree = "<group>"; };
 		31B241A820D1758B00F72B7B /* AddListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListingViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				2FD3BCF020ED24890091E11F /* SearchResultsViewController.swift */,
 				2FD3BCF420ED25310091E11F /* SearchResultTableViewCell.swift */,
 				F16DD95B20EE33EB00A7D2AD /* ChatsViewController.swift */,
+				316570A020F1047500642190 /* AboutProxyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 				2FD3BCF120ED24890091E11F /* SearchResultsView.xib */,
 				2FD3BCF520ED25310091E11F /* SearchResultTableViewCell.xib */,
 				F16DD95C20EE33EB00A7D2AD /* ChatsView.xib */,
+				316570A120F1047500642190 /* AboutProxyViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				7414244620C9728A009F3FD2 /* Assets.xcassets in Resources */,
 				74570B9720C978CC003D48DD /* LogInView.xib in Resources */,
 				31B241AB20D1759300F72B7B /* AddListingViewController.xib in Resources */,
+				316570A320F1047500642190 /* AboutProxyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F6A6E9820C9AA5100BF328A /* ViewControllerExtensions.swift in Sources */,
+				316570A220F1047500642190 /* AboutProxyViewController.swift in Sources */,
 				2FD3BCF220ED24890091E11F /* SearchResultsViewController.swift in Sources */,
 				F16DD95D20EE33EB00A7D2AD /* ChatsViewController.swift in Sources */,
 				2FD3BCF920ED28350091E11F /* UIImageExtensions.swift in Sources */,
