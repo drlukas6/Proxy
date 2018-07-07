@@ -27,6 +27,7 @@
                 <outlet property="priceTextField" destination="fme-C9-rwu" id="HgA-DI-Taj"/>
                 <outlet property="setLocationTextField" destination="eVS-cP-j0q" id="ttJ-en-Umg"/>
                 <outlet property="submitButton" destination="EWT-Pb-6NV" id="bDA-y3-Qxo"/>
+                <outlet property="successEffect" destination="8fy-fY-UK4" id="tnu-1v-wrg"/>
                 <outlet property="titleLabel" destination="OBc-2y-ZTd" id="eL1-k2-i12"/>
                 <outlet property="titleRequiredLabel" destination="W8P-r9-jBx" id="aT6-RT-41e"/>
                 <outlet property="titleTextField" destination="EcN-yF-4EA" id="M5T-lo-r7V"/>
@@ -206,12 +207,37 @@
                         <constraint firstItem="HRV-4y-tOg" firstAttribute="leading" secondItem="Nro-MS-ufT" secondAttribute="leading" constant="16" id="uwK-Nn-l4G"/>
                     </constraints>
                 </scrollView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fy-fY-UK4">
+                    <rect key="frame" x="0.0" y="20" width="375" height="628"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qOR-mg-3eg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="628"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="E9u-a7-DaF">
+                                <rect key="frame" x="87.5" y="214" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="E9u-a7-DaF" secondAttribute="height" multiplier="1:1" id="B9d-HW-On7"/>
+                                    <constraint firstAttribute="width" constant="200" id="R0w-zh-SDi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="E9u-a7-DaF" firstAttribute="centerX" secondItem="qOR-mg-3eg" secondAttribute="centerX" id="T2P-d1-Ssf"/>
+                            <constraint firstItem="E9u-a7-DaF" firstAttribute="centerY" secondItem="qOR-mg-3eg" secondAttribute="centerY" id="fkU-KL-gMs"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
             </subviews>
             <color key="backgroundColor" name="modernBlue"/>
             <constraints>
                 <constraint firstItem="Nro-MS-ufT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8Dv-gW-6pn"/>
                 <constraint firstItem="Nro-MS-ufT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PS8-q5-3Zn"/>
                 <constraint firstItem="Nro-MS-ufT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="byE-64-ftG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8fy-fY-UK4" secondAttribute="trailing" id="c18-Ha-5UV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8fy-fY-UK4" secondAttribute="bottom" id="cGY-e4-28j"/>
+                <constraint firstItem="8fy-fY-UK4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="k6W-bo-Fnq"/>
+                <constraint firstItem="8fy-fY-UK4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mF6-fS-YWN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Nro-MS-ufT" secondAttribute="bottom" id="yQU-Mw-NgF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -220,6 +246,7 @@
         </view>
     </objects>
     <resources>
+        <image name="success" width="384" height="384"/>
         <namedColor name="babyRed">
             <color red="0.91764705882352937" green="0.23529411764705882" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -227,7 +254,7 @@
             <color red="0.89411764705882357" green="0.99215686274509807" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="modernBlue">
-            <color red="0.19200000166893005" green="0.39599999785423279" blue="0.64300000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19200000166893005" green="0.44499999284744263" blue="0.64300000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="trafficLightGreen">
             <color red="0.0" green="0.68235294117647061" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -36,11 +36,16 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var priceRequiredLabel: UILabel!
     @IBOutlet weak var titleRequiredLabel: UILabel!
     
+    
+    @IBOutlet weak var successEffect: UIVisualEffectView!
+    
+    
     var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
     
     var imageData : Data?
     var listing : Listing?
     var delegat : UpdateListingDelegat?
+    var effect: UIVisualEffect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,11 +104,35 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         locationMap.layer.cornerRadius = 20.0
         descriptionTextField.layer.cornerRadius = 20.0
         self.hideKeyboardWhenTappedAround()
+        
+        effect = successEffect.effect
+        successEffect.effect = nil
+        successEffect.contentView.alpha = 0.0
+        successEffect.isHidden = true
+        
         if let updateListing = listing {
             titleLabel.isHidden = false
             priceLabel.isHidden = false
             locationLabel.isHidden = false
         }
+    }
+    
+    func animateSuccess() {
+        successEffect.contentView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        successEffect.isHidden = false
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.successEffect.effect = self.effect
+            self.successEffect.contentView.alpha = 1.0
+            self.successEffect.contentView.transform = CGAffineTransform.identity
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.resetView()
+            self.tabBarController?.selectedIndex = 0
+        }
+        
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -316,9 +345,9 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             addToStorage(listing: listing!, data: imageData)
         }
         
+        animateSuccess()
         
-        resetView()
-        tabBarController?.selectedIndex = 0
+        
     }
     
 
@@ -374,5 +403,11 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         let annotations = self.locationMap.annotations
         self.locationMap.removeAnnotations(annotations)
         imageData = nil
+        
+        effect = successEffect.effect
+        successEffect.effect = nil
+        successEffect.contentView.alpha = 0.0
+        successEffect.isHidden = true
+        
     }
 }
