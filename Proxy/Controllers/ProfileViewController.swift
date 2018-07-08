@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController {
             Storage.storage().reference(withPath: "/userAvatar/\(user.uid).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
                 if let err = error {
                     print(err)
-                    self.profileImage.image = #imageLiteral(resourceName: "Placeholder")
+                    self.profileImage.image = UIImage(named: "prof")
                 }
                 else {
                     if let imageData = data {
@@ -107,6 +107,9 @@ class ProfileViewController: UIViewController {
         
         DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byOwner, comparison: Auth.auth().currentUser!.uid) { (response) in
             self.profileListings = response.flatMap { Listing(json: $0) }
+            self.profileListings.sort(by: { (listing1, listing2) -> Bool in
+                return listing1.date < listing2.date
+            })
             self.tableView.reloadData()
         }
     }

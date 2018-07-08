@@ -12,6 +12,7 @@ class SearchResultsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var searchResults: [Listing]!
+    var category : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,13 @@ class SearchResultsViewController: UIViewController {
     }
     
     func initialSetup() {
-        self.title = "Search Results"
+        if let titleCategory = category {
+            self.title = titleCategory
+        }
+        else {
+            self.title = "Search Results"
+        }
+        
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.layer.cornerRadius = 15.0

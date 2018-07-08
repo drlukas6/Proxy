@@ -20,6 +20,12 @@ class ProfileTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        itemTitleLabel.text = ""
+        dateLabel.text = ""
+        self.itemImage.image = nil
+    }
+    
     func setupCell (listing : Listing) {
         itemTitleLabel.text = listing.title
         let formaterStD = DateFormatter()

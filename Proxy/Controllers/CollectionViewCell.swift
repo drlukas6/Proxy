@@ -22,10 +22,14 @@ class CollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        imageCollectionView.image = nil
+        titleCollectionView.text = ""
+    }
    
     
     func setUpCollectionViewCell(listing: Listing) {
-        titleCollectionView.text = listing.title
+        titleCollectionView.text = "\(listing.title) - HRK \(String(format: "%.2f", listing.price))"
         Storage.storage().reference(withPath: "/images/\(listing.id).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
             if let err = error {
                 print(err)

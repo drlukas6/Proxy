@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol collectionCellTappedDelegate {
+    func tappedCollectionCell(listing: Listing)
+}
+
 class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var categorieCollectionView: UICollectionView!
     @IBOutlet weak var categorieTitle: UILabel!
+    var delegat : collectionCellTappedDelegate?
     
     var listings: [Listing] = [] {
         didSet {
@@ -19,7 +24,9 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     }
     var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
     
-    
+    override func prepareForReuse() {
+        categorieTitle.text = ""
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,18 +48,18 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     func setUpTableViewCell(category: Category) {
         self.categorieTitle.text = category.rawValue
         
-        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: Category.footwear.rawValue) { (response) in
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: category.rawValue) { (response) in
             self.listings = response.flatMap { Listing(json: $0) }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categorieCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionId", for: indexPath) as! CollectionViewCell
-        if listings.count != 0 {
+        if listings.count > 4  {
             cell.setUpCollectionViewCell(listing: listings[indexPath.row])
         }
         return cell
@@ -66,6 +73,11 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        delegat?.tappedCollectionCell(listing: listings[indexPath.row])
     }
     
     
