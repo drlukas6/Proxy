@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController {
             Storage.storage().reference(withPath: "/userAvatar/\(user.uid).png").getData(maxSize: 15 * 1024 * 1024) { (data, error) in
                 if let err = error {
                     print(err)
-                    self.profileImage.image = #imageLiteral(resourceName: "Placeholder")
+                    self.profileImage.image = UIImage(named: "prof")
                 }
                 else {
                     if let imageData = data {

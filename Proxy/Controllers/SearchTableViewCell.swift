@@ -68,6 +68,13 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
         return 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let listingVC = ListingViewController()
+        listingVC.listing = listings[indexPath.row]
+//        UINavigationController.pushViewController(listingVC as! UINavigationController)
+    }
+    
     
     
     
