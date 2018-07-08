@@ -22,6 +22,10 @@ class CollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        imageCollectionView.image = nil
+        titleCollectionView.text = ""
+    }
    
     
     func setUpCollectionViewCell(listing: Listing) {

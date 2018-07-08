@@ -19,7 +19,9 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     }
     var categorieList = [Category.clothing, Category.drinks, Category.food, Category.footwear, Category.mobile, Category.sport, Category.technology, Category.misc]
     
-    
+    override func prepareForReuse() {
+        categorieTitle.text = ""
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +43,7 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     func setUpTableViewCell(category: Category) {
         self.categorieTitle.text = category.rawValue
         
-        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: categorieTitle.text!) { (response) in
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: category.rawValue) { (response) in
             self.listings = response.flatMap { Listing(json: $0) }
         }
     }
