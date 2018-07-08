@@ -54,12 +54,15 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if listings.count > 5 {
+            return 5
+        }
+        return listings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categorieCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionId", for: indexPath) as! CollectionViewCell
-        if listings.count > 4  {
+        if listings.count > indexPath.row  {
             cell.setUpCollectionViewCell(listing: listings[indexPath.row])
         }
         return cell
