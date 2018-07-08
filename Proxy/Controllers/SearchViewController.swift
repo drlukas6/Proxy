@@ -8,9 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
-    
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, collectionCellTappedDelegate {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableSearch: UITableView!
@@ -38,11 +36,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! SearchTableViewCell
         cell.setUpTableViewCell(category: categorieList[indexPath.row])
+        cell.delegat = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        DatabaseHelper.init().getListingsBy(condition: DatabaseHelper.byCategory, comparison: categorieList[indexPath.row].rawValue) { (response) in
+            let svc = SearchResultsViewController()
+            svc.searchResults = response.flatMap { Listing(json: $0) }
+            svc.category = self.categorieList[indexPath.row].rawValue
+            self.navigationController?.pushViewController(svc, animated: true)
+        }
     }
     
     @objc
@@ -56,9 +62,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.navigationController?.pushViewController(searchResultsVC, animated: true)
         }
     }
-    
-    
-    
+    func tappedCollectionCell(listing: Listing) {
+        let lvc = ListingViewController()
+        lvc.listing = listing
+        self.navigationController?.pushViewController(lvc, animated: true)
+    }
     
     func initialSetup() {
         self.hideKeyboardWhenTappedAround()

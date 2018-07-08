@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol collectionCellTappedDelegate {
+    func tappedCollectionCell(listing: Listing)
+}
+
 class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var categorieCollectionView: UICollectionView!
     @IBOutlet weak var categorieTitle: UILabel!
+    var delegat : collectionCellTappedDelegate?
     
     var listings: [Listing] = [] {
         didSet {
@@ -72,9 +77,7 @@ class SearchTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let listingVC = ListingViewController()
-        listingVC.listing = listings[indexPath.row]
-//        UINavigationController.pushViewController(listingVC as! UINavigationController)
+        delegat?.tappedCollectionCell(listing: listings[indexPath.row])
     }
     
     
