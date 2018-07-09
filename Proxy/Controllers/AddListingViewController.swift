@@ -326,7 +326,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             }
             DatabaseHelper.init().ListingsReference.child(updatedListing.id).setValue(updatedListing.databaseFormat())
             resetView()
-            
+            listing = nil
             navigationController?.popViewController(animated: true)
         }
         else {
@@ -343,11 +343,10 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             listing = Listing(id: UUID().uuidString,title: title, owner: (Auth.auth().currentUser?.uid)!, ownerDisplayName: (Auth.auth().currentUser?.displayName)!, price: price, description: description, imageData: [], location: latitude.description + "," + longitude.description, date:dateFormatter.string(from: Date()), category: category)
             
             addToStorage(listing: listing!, data: imageData)
+            
+            listing = nil
         }
-        
         animateSuccess()
-        
-        
     }
     
 
