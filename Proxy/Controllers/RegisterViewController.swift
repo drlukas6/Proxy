@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var createAccountButton: UIButton!
     
+    @IBOutlet weak var passwordRequired: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +36,18 @@ class RegisterViewController: UIViewController {
 
     @IBAction func createAccount(_ sender: UIButton) {
         guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
+            showToast(message: "All fields required")
+            return
+        }
+        if username.trimmingCharacters(in: .whitespaces) == "", email.trimmingCharacters(in: .whitespaces) == "", password.trimmingCharacters(in: .whitespaces) == "" {
+            showToast(message: "All fields required")
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { (response, error) in
 
             if let error = error {
                 print(error.localizedDescription)
+                self.passwordRequired.isHidden = false
             }
             if let user = response?.user {
                 let changeRequest = user.createProfileChangeRequest()
