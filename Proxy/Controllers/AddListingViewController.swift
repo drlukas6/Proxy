@@ -117,6 +117,21 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if titleTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+            titleLabel.isHidden = true
+        }
+        if priceTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+            priceLabel.isHidden = true
+        }
+        if setLocationTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
+            locationLabel.isHidden = true
+        }
+        if imageData == nil {
+            imageUploadedLabel.isHidden = true
+        }
+    }
+    
     func animateSuccess() {
         successEffect.contentView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         successEffect.isHidden = false
@@ -133,12 +148,6 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
         
         
         
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if let newListing = listing {
-            delegat?.udateListing(listing: newListing)
-        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -326,6 +335,7 @@ class AddListingViewController: UIViewController, UINavigationControllerDelegate
             }
             DatabaseHelper.init().ListingsReference.child(updatedListing.id).setValue(updatedListing.databaseFormat())
             resetView()
+            delegat?.udateListing(listing: updatedListing)
             listing = nil
             navigationController?.popViewController(animated: true)
         }
